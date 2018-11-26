@@ -27,6 +27,7 @@ class Stepper extends Component {
                     step = {step}
                     id= {i}
                     style = {this.style}
+                    numberOfSteps= {this.steps.length}
                     lineRight={i==this.steps.length-1?false:true}
                     lineLeft={i?true:false}
                     changeCurrentStep={this.props.changeCurrentStep}
