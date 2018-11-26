@@ -4,6 +4,9 @@ import { throws } from 'assert';
 class Step extends Component {
     constructor(props) {
         super()
+        console.log('-------------step-----------------------');
+        console.log(props);
+        console.log('------------------------------------');
         // styling
         this.stepOuterStyle = {
             width: `${100 / props.numberOfSteps}`
@@ -12,13 +15,14 @@ class Step extends Component {
         this.shapeStyle = Object.assign({}, props.style.shape);
         this.shapeStyle.height = this.shapeStyle.size
         this.shapeStyle.width = this.shapeStyle.size
+        this.shapeStyle.borderColor = props.step.shapeBorderColor
+        this.shapeStyle.backgroundColor= props.step.shapeBackgroundColor
 
         this.shapeContentStyle = {
-            ...props.style.shapeContent,
-            ...{
-                fontSize: `${this.shapeStyle.size / 2}px`,
-                lineHeight: `${this.shapeStyle.size}px`
-            }
+                fontSize: `${this.shapeStyle.size / 2.2}px`,
+                lineHeight: `${this.shapeStyle.size}px`,
+                color: props.step.shapeContentColor
+            
         }
         if(props.lineLeft){
             this.lineLeftStyle = Object.assign({}, props.style.line);

@@ -14,19 +14,14 @@ class App extends Component {
         paddingBottom: 24,       //pixel
       },
       shape:{
-        size: 60,
+        size: 80,
         borderWidth: 4,
-        borderColor: '#42f6f4',
         borderRadius: '50%',
-        backgroundColor: '#96acce'
       },
       line: {
         borderWidth: 3,
-        color: '#b2b8c1',
+        borderColor: 'gray',
         padding: 4
-      },
-      shapeContent:{
-        color: '#ff1d00'
       }
     }
 
@@ -34,17 +29,34 @@ class App extends Component {
     this.steps = [
       {
         text: '1',
-     //   icon: 'fa-address-book',
+        icon: 'fa-user',
+        shapeBorderColor: 'green',
+        shapeBackgroundColor: '#fff',
+        shapeContentColor: 'green',
         enabled: true
       },
       {
         text: '2',
-     //   icon: 'fa-address-book',
+        icon: 'fa-server',
+        shapeBorderColor: '#f4b042',
+        shapeBackgroundColor: '#fff',
+        shapeContentColor: '#f4b042',
         enabled: false
       },
       {
         text: '3',
-     //   icon: 'fa-address-book',
+        icon: ' fa-home',
+        shapeBorderColor: '#4f6cc1',
+        shapeBackgroundColor: '#fff',
+        shapeContentColor: '#4f6cc1',
+        enabled: false
+      },
+      {
+        text: '4',
+        icon: 'fa-check',
+        shapeBorderColor: '#ff5b3a',
+        shapeBackgroundColor: '#fff',
+        shapeContentColor: '#ff5b3a',
         enabled: false
       }
     ]
