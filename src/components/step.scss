@@ -1,0 +1,61 @@
+//Container
+$containerPaddingTop: 24px;
+$containerPaddingBottom: 24px;
+//stepShape
+$shapeSize: 100px;
+$shapeBorderWidth: 4px;
+$shapeBorderColor: blue;
+$shapeBorderRadius: 50%;
+$shapeBackgroundColor: gray;
+//line
+$lineWidth: 3px;
+$lineColor:green;
+$linePadding: 10px;
+
+.container{
+    padding-top: $containerPaddingTop;
+    padding-bottom: $containerPaddingBottom;
+    display: table;
+    width: 100%;
+    margin: 0px auto;
+    min-height: 0px;
+    .stepOuter{
+        width: 33.333%;
+        display: table-cell;
+        position: relative;
+        .stepShape {
+            width: $shapeSize;
+            height: $shapeSize;
+            border: $shapeBorderWidth solid $shapeBorderColor;
+            border-radius: $shapeBorderRadius;
+            background-color: $shapeBackgroundColor;
+            margin: 0px auto;
+            text-align: center;
+            padding: 0px;
+            font-size: 16px;
+            display: block;
+            .shapeContent{
+                font-size: ($shapeSize/2);
+                line-height: $shapeSize;
+                color: red;
+            }
+        }
+        .lineLeft{
+            position: absolute;
+            top: ($shapeSize / 2);
+            border-top: $lineWidth solid $lineColor;
+            right: 50%;
+            left: 0px;
+            margin-right: ($shapeSize /2 + $shapeBorderWidth + $linePadding);
+        }
+        .lineRight{
+            position: absolute;
+            top: ($shapeSize / 2);
+            border-top: $lineWidth solid $lineColor;
+            right: 0px;
+            left: 50%;
+            margin-left: ($shapeSize /2+ $shapeBorderWidth + $linePadding);
+        }
+    }
+}
+
