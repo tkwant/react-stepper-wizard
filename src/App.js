@@ -7,7 +7,26 @@ class App extends Component {
   constructor() {
     super()
     this.firstStepper = React.createRef()
-    this.steps =[
+    //style is optional
+    this.stepperStyle = {
+      container:{
+        paddingTop: 24,          //pixel
+        paddingBottom: 24,       //pixel
+      },
+      shape:{
+        size: 100,
+        borderWidth: 3,
+        borderColor: '#42f6f4',
+        borderRadius: '50%',
+        backgroundColor: '#96acce'
+      },
+      line: {
+        borderWidth: 4,
+        color: '#b2b8c1',
+        padding: 10
+      }
+    }
+    this.steps = [
       {
         title: 'one',
         icon: 'string',
@@ -68,7 +87,7 @@ class App extends Component {
       <div>
         <Stepper
           ref={this.firstStepper}
-          style={this.style}
+          style={this.stepperStyle}
           steps={this.steps}
           changeCurrentStep={this.changeCurrentStep}
         />

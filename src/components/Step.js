@@ -4,6 +4,11 @@ import { throws } from 'assert';
 class Step extends Component {
     constructor(props) {
         super()
+        this.shapeStyle = Object.assign({}, props.style.shape);
+        this.lineStyle = Object.assign({}, props.style.line);
+        this.shapeStyle.height = this.shapeStyle.size
+        this.shapeStyle.width = this.shapeStyle.size
+        delete this.shapeStyle.size
         console.log('-----------step props-------------------------');
         console.log(props);
         console.log('------------------------------------');
@@ -12,7 +17,7 @@ class Step extends Component {
     renderLineRight(){
         if(this.props.lineRight){
             return(
-                <div className='lineRight'>
+                <div style={this.lineStyle} className='lineRight'>
                 </div>
             )
         }else{
@@ -22,7 +27,7 @@ class Step extends Component {
     renderLineLeft(){
         if(this.props.lineLeft){
             return(
-                <div className='lineLeft'>
+                <div style={this.lineStyle} className='lineLeft'>
                 </div>
             )
         }else{
@@ -37,7 +42,7 @@ class Step extends Component {
     render() {
         return (
             <div className='stepOuter'>
-                <div data-ref={this.props.id} className=' stepShape disabled' onClick={this.setCurrentStep}>
+                <div data-ref={this.props.id} style={this.shapeStyle} className=' stepShape disabled' onClick={this.setCurrentStep}>
                     <i className="shapeContent fa fa-fw fa-spinner fa-spin"></i>
                 </div>
                 {this.renderLineRight()}
