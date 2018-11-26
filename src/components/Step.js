@@ -4,7 +4,7 @@ import { throws } from 'assert';
 class Step extends Component {
     constructor(props) {
         super()
-
+        // styling
         this.stepOuterStyle = {
             width: `${100 / props.numberOfSteps}`
         }
@@ -31,12 +31,8 @@ class Step extends Component {
             this.lineRightStyle.marginLeft = this.shapeStyle.size/2 + this.shapeStyle.borderWidth +this.lineRightStyle.padding
         }
 
-
-
         delete this.shapeStyle.size
-        console.log('-----------step props-------------------------');
-        console.log(props);
-        console.log('------------------------------------');
+
         this.setCurrentStep = this.setCurrentStep.bind(this)
     }
     renderLineRight() {
@@ -68,7 +64,7 @@ class Step extends Component {
         return (
             <div style={this.stepOuterStyle} className='stepOuter'>
                 <div data-ref={this.props.id} style={this.shapeStyle} className=' shape disabled' onClick={this.setCurrentStep}>
-                    <i style={this.shapeContentStyle} className="shapeContent fa fa-fw fa-spinner fa-spin"></i>
+                    <i style={this.shapeContentStyle} className={`shapeContent fa ${this.props.step.icon}`}>{this.props.step.icon?'':this.props.step.text}</i>
                 </div>
                 {this.renderLineRight()}
                 {this.renderLineLeft()}

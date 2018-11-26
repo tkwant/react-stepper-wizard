@@ -23,26 +23,28 @@ class App extends Component {
       line: {
         borderWidth: 3,
         color: '#b2b8c1',
-        padding: 10
+        padding: 4
       },
       shapeContent:{
         color: '#ff1d00'
       }
     }
+
+    // only icon or text possible not both
     this.steps = [
       {
-        title: 'one',
-        icon: 'string',
+        text: '1',
+     //   icon: 'fa-address-book',
         enabled: true
       },
       {
-        title: 'two',
-        icon: 'string',
+        text: '2',
+     //   icon: 'fa-address-book',
         enabled: false
       },
       {
-        title: 'three',
-        icon: 'string',
+        text: '3',
+     //   icon: 'fa-address-book',
         enabled: false
       }
     ]
