@@ -23,6 +23,7 @@ $linePadding: 10px;
         width: 33.333%;
         display: table-cell;
         position: relative;
+
         .stepShape {
             width: $shapeSize;
             height: $shapeSize;
@@ -40,6 +41,10 @@ $linePadding: 10px;
                 color: red;
             }
         }
+        .disabled{
+            background-color: green
+        }
+
         .lineLeft{
             position: absolute;
             top: ($shapeSize / 2);

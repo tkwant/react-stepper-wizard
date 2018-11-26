@@ -16,17 +16,18 @@ class Template1 extends Component {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        this.props.changeStepEnabled(0, true)
+
+        if(value){
+            this.props.changeStepEnabled(0, true)
+        }else{
+            this.props.changeStepEnabled(0, false)
+
+        }
         this.setState({
             [name]: value
         });
     }
 
-    componentDidUpdate(){
-        console.log('------------------------------------');
-        console.log('update');
-        console.log('------------------------------------');
-    }
 
     render() {
         return (
