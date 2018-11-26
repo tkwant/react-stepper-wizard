@@ -5,32 +5,30 @@ import 'font-awesome/css/font-awesome.min.css';
 class Stepper extends Component {
     constructor(props) {
         super()
-        console.log('-----------Stepper props-------------------------');
-        console.log(props);
-        console.log('------------------------------------');
+        this.style = props.style
+        this.steps = props.steps
+
+
     }
 
     changeStepEnabled(){
-        console.log('------------------------------------');
-        console.log("HELLO");
-        console.log('------------------------------------');
+
     }
 
-    changeCurrentStep(){
-        console.log('------------------------------------');
-        console.log("HELLO2");
-        console.log('------------------------------------');
+    changeCurrentStep(newStep){
+
     }
 
     render() {
-        let steps = this.props.steps
-
+        console.log(this)
         return (
-            <div className='container'>
-                {steps.map((step, i) => <Step
+            <div style={this.style.container} className='container'>
+                {this.steps.map((step, i) => <Step
                     step = {step}
-                    style = {this.props.style}
-                    lineRight={i==steps.length-1?false:true}
+                    id= {i}
+                    style = {this.style}
+                    numberOfSteps= {this.steps.length}
+                    lineRight={i==this.steps.length-1?false:true}
                     lineLeft={i?true:false}
                     changeCurrentStep={this.props.changeCurrentStep}
                 />)}

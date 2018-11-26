@@ -1,7 +1,7 @@
 //Container
 $containerPaddingTop: 24px;
 $containerPaddingBottom: 24px;
-//stepShape
+//shape
 $shapeSize: 100px;
 $shapeBorderWidth: 4px;
 $shapeBorderColor: blue;
@@ -11,6 +11,8 @@ $shapeBackgroundColor: gray;
 $lineWidth: 3px;
 $lineColor:green;
 $linePadding: 10px;
+//shapeContent
+$shapeContentColor: red;
 
 .container{
     padding-top: $containerPaddingTop;
@@ -20,11 +22,11 @@ $linePadding: 10px;
     margin: 0px auto;
     min-height: 0px;
     .stepOuter{
-        width: 33.333%;
+        // width: 33.333%;
         display: table-cell;
         position: relative;
 
-        .stepShape {
+        .shape {
             width: $shapeSize;
             height: $shapeSize;
             border: $shapeBorderWidth solid $shapeBorderColor;
@@ -38,7 +40,7 @@ $linePadding: 10px;
             .shapeContent{
                 font-size: ($shapeSize/2);
                 line-height: $shapeSize;
-                color: red;
+                color: $shapeContentColor;
             }
         }
         .disabled{
@@ -59,7 +61,6 @@ $linePadding: 10px;
             border-top: $lineWidth solid $lineColor;
             right: 0px;
             left: 50%;
-            margin-left: ($shapeSize /2+ $shapeBorderWidth + $linePadding);
         }
     }
 }
