@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Stepper from './components/Stepper'
 import Template1 from './components/templates/Template1'
 import Template2 from './components/templates/Template2'
+import Template3 from './components/templates/Template3'
 class App extends Component {
   constructor() {
     super()
@@ -29,7 +30,6 @@ class App extends Component {
 
     this.changeStepEnabled = this.changeStepEnabled.bind(this)
     this.changeCurrentStep = this.changeCurrentStep.bind(this)
-    this.handleClick = this.handleClick.bind(this)
 
   }
 
@@ -39,11 +39,13 @@ class App extends Component {
   }
 
 
-  changeCurrentStep(newStep) {
+  changeCurrentStep(newCurrentStep) {
+    console.log('-------------newCurrentStep-----------------------');
+    console.log(newCurrentStep);
     console.log('------------------------------------');
-    console.log("New Step");
-    console.log('------------------------------------');
-    
+    this.setState({
+      currentStep: newCurrentStep
+    })
     //this.firstStepper.current.changeCurrentStep()
   }
 
@@ -59,11 +61,7 @@ class App extends Component {
     }
   }
 
-  handleClick(){
-    this.setState({
-      currentStep: 1
-    })
-  }
+
 
   render() {
     return (
@@ -75,9 +73,6 @@ class App extends Component {
           changeCurrentStep={this.changeCurrentStep}
         />
         {this.renderContent()}
-        <button onClick={this.handleClick}>
-            Activate Lasers
-      </button> 
       </div>
     )
   }

@@ -16,7 +16,7 @@ class Stepper extends Component {
         console.log('------------------------------------');
     }
 
-    changeCurrentStep(){
+    changeCurrentStep(newStep){
         console.log('------------------------------------');
         console.log("HELLO2");
         console.log('------------------------------------');
@@ -29,6 +29,7 @@ class Stepper extends Component {
             <div className='container'>
                 {steps.map((step, i) => <Step
                     step = {step}
+                    id= {i}
                     style = {this.props.style}
                     lineRight={i==steps.length-1?false:true}
                     lineLeft={i?true:false}

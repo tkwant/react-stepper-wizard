@@ -7,6 +7,7 @@ class Step extends Component {
         console.log('-----------step props-------------------------');
         console.log(props);
         console.log('------------------------------------');
+        this.setCurrentStep = this.setCurrentStep.bind(this)
     }
     renderLineRight(){
         if(this.props.lineRight){
@@ -28,16 +29,15 @@ class Step extends Component {
             return (null)
         }
     }
-    shapeOnClick(){
-        console.log('------------------------------------');
-        console.log("CLicked");
-        console.log('------------------------------------');
+    setCurrentStep(e){
+        const newCurrentStep= e.currentTarget.getAttribute('data-ref')
+        this.props.changeCurrentStep(parseInt(newCurrentStep))
     }
 
     render() {
         return (
             <div className='stepOuter'>
-                <div className=' stepShape disabled' onClick={this.props.changeCurrentStep}>
+                <div data-ref={this.props.id} className=' stepShape disabled' onClick={this.setCurrentStep}>
                     <i className="shapeContent fa fa-fw fa-spinner fa-spin"></i>
                 </div>
                 {this.renderLineRight()}
