@@ -76,9 +76,6 @@ class App extends Component {
 
 
   changeCurrentStep(newCurrentStep) {
-    console.log('-------------newCurrentStep-----------------------');
-    console.log(newCurrentStep);
-    console.log('------------------------------------');
     this.setState({
       currentStep: newCurrentStep
     })
@@ -100,12 +97,14 @@ class App extends Component {
 
 
   render() {
+    console.log("render")
     return (
       <div>
         <Stepper
           ref={this.firstStepper}
           style={this.stepperStyle}
           steps={this.steps}
+          currentStep={this.state.currentStep}
           changeCurrentStep={this.changeCurrentStep}
         />
         {this.renderContent()}

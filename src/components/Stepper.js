@@ -20,7 +20,7 @@ class Stepper extends Component {
     }
 
     render() {
-        console.log(this)
+        console.log("render2")
         return (
             <div style={this.style.container} className='container'>
                 {this.steps.map((step, i) => <Step
@@ -28,6 +28,7 @@ class Stepper extends Component {
                     id= {i}
                     style = {this.style}
                     numberOfSteps= {this.steps.length}
+                    currentStep={this.props.currentStep}
                     lineRight={i==this.steps.length-1?false:true}
                     lineLeft={i?true:false}
                     changeCurrentStep={this.props.changeCurrentStep}

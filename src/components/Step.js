@@ -4,45 +4,92 @@ import { throws } from 'assert';
 class Step extends Component {
     constructor(props) {
         super()
-        console.log('-------------step-----------------------');
+        // styling
+        console.log('-----------props-------------------------');
         console.log(props);
         console.log('------------------------------------');
-        // styling
-        this.stepOuterStyle = {
-            width: `${100 / props.numberOfSteps}`
-        }
-
-        this.shapeStyle = Object.assign({}, props.style.shape);
-        this.shapeStyle.height = this.shapeStyle.size
-        this.shapeStyle.width = this.shapeStyle.size
-        this.shapeStyle.borderColor = props.step.shapeBorderColor
-        this.shapeStyle.backgroundColor= props.step.shapeBackgroundColor
-
-        this.shapeContentStyle = {
-                fontSize: `${this.shapeStyle.size / 2.2}px`,
-                lineHeight: `${this.shapeStyle.size}px`,
+        const size = props.style.shape.size
+        this.state = {
+            steperOuterStyle: {
+                width:`${100 / props.numberOfSteps}`
+            },
+            shapeStyle: {
+                height:size,
+                width: size,
+                borderWidth: props.style.shape.borderWidth,
+                borderRadius: props.style.shape.borderRadius,
+                borderColor: props.step.shapeBorderColor,
+                backgroundColor: props.step.shapeBackgroundColor
+            },
+            shapeContentStyle: {
+                fontSize: `${size / 2.2}px`,
+                lineHeight: `${size}px`,
                 color: props.step.shapeContentColor
-            
+            },
+            lineLeftStyle:{
+                borderWidth: props.style.line.borderWidth,
+                borderColor: props.style.line.borderColor,
+                padding: props.style.line.padding,
+                top: size/2,
+                marginRight: size/2 + props.style.shape.borderWidth +props.style.line.padding
+            },
+            lineRightStyle:{
+                borderWidth: props.style.line.borderWidth,
+                borderColor: props.style.line.borderColor,
+                padding: props.style.line.padding,
+                top: size/2,
+                marginLeft: size/2 + props.style.shape.borderWidth +props.style.line.padding
+            }
         }
-        if(props.lineLeft){
-            this.lineLeftStyle = Object.assign({}, props.style.line);
-            this.lineLeftStyle.top = this.shapeStyle.size / 2
-            this.lineLeftStyle.marginRight = this.shapeStyle.size/2 + this.shapeStyle.borderWidth +this.lineLeftStyle.padding
-        }
-        if(props.lineRight){
-            this.lineRightStyle = Object.assign({}, props.style.line);
-            this.lineRightStyle.top = this.shapeStyle.size / 2
-            this.lineRightStyle.marginLeft = this.shapeStyle.size/2 + this.shapeStyle.borderWidth +this.lineRightStyle.padding
-        }
-
-        delete this.shapeStyle.size
-
         this.setCurrentStep = this.setCurrentStep.bind(this)
+    }
+    // componentWillUpdate(props) {
+    //         this.setCurrentStepView(props)
+    // }
+
+    componentWillReceiveProps(props){
+        this.setCurrentStepView(props)
+    }
+
+    setCurrentStepView(props){
+        console.log('------------props------------------------');
+        console.log(props);
+        console.log('------------------------------------');
+        if (props.currentStep === props.id) {
+            this.setState({
+                shapeStyle:{
+                    ...this.state.shapeStyle,
+                    backgroundColor: props.step.shapeBorderColor,
+                },
+                shapeContentStyle:{
+                    ...this.state.shapeContentStyle,
+                    color: '#fff'
+                }
+            })
+            // this.shapeStyle.backgroundColor = props.step.shapeBorderColor
+            // this.shapeContentStyle.color = '#fff'
+        }else{
+            this.setState({
+                shapeStyle:{
+                    ...this.state.shapeStyle,
+                    backgroundColor: '#fff',
+                },
+                shapeContentStyle:{
+                    ...this.state.shapeContentStyle,
+                    color: props.step.shapeBorderColor
+                }
+            })
+        }
+    }
+    componentDidUpdate(){
+        console.log('----------this.state--------------------------');
+        console.log(this.state);
+        console.log('------------------------------------');
     }
     renderLineRight() {
         if (this.props.lineRight) {
             return (
-                <div style={this.lineRightStyle} className='lineRight'>
+                <div style={this.state.lineRightStyle} className='lineRight'>
                 </div>
             )
         } else {
@@ -52,7 +99,7 @@ class Step extends Component {
     renderLineLeft() {
         if (this.props.lineLeft) {
             return (
-                <div style={this.lineLeftStyle} className='lineLeft'>
+                <div style={this.state.lineLeftStyle} className='lineLeft'>
                 </div>
             )
         } else {
@@ -66,9 +113,9 @@ class Step extends Component {
 
     render() {
         return (
-            <div style={this.stepOuterStyle} className='stepOuter'>
-                <div data-ref={this.props.id} style={this.shapeStyle} className=' shape disabled' onClick={this.setCurrentStep}>
-                    <i style={this.shapeContentStyle} className={`shapeContent fa ${this.props.step.icon}`}>{this.props.step.icon?'':this.props.step.text}</i>
+            <div style={this.state.steperOuterStyle} className='stepOuter'>
+                <div data-ref={this.props.id} style={this.state.shapeStyle} className=' shape disabled' onClick={this.setCurrentStep}>
+                    <i style={this.state.shapeContentStyle} className={`shapeContent fa ${this.props.step.icon}`}>{this.props.step.icon ? '' : this.props.step.text}</i>
                 </div>
                 {this.renderLineRight()}
                 {this.renderLineLeft()}
