@@ -2,7 +2,7 @@
 $containerPaddingTop: 24px;
 $containerPaddingBottom: 24px;
 //shape
-$shapeSize: 100px;
+$shapeSize: 70px;
 $shapeBorderWidth: 4px;
 $shapeBorderColor: blue;
 $shapeBorderRadius: 50%;
@@ -42,10 +42,20 @@ $shapeContentColor: red;
                 line-height: $shapeSize;
                 color: $shapeContentColor;
             }
+            .disabled{
+                position: absolute;
+                top: 50%; 
+                left: 50%;
+                transform: translate(-50%,-50%);
+                border-radius: $shapeBorderRadius;
+                z-index : 10;
+                width: $shapeSize + 2*$shapeBorderWidth;
+                height: $shapeSize + 2*$shapeBorderWidth;
+                background-color: black;
+                opacity: 0.5;
+            }
         }
-        .disabled{
-            background-color: green
-        }
+
 
         .lineLeft{
             position: absolute;

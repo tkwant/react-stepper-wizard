@@ -6,9 +6,8 @@ import Template3 from './components/templates/Template3'
 class App extends Component {
   constructor() {
     super()
-    this.firstStepper = React.createRef()
     //style is optional
-    this.stepperStyle = {
+    this.style = {
       container:{
         paddingTop: 24,          //pixel
         paddingBottom: 24,       //pixel
@@ -26,60 +25,62 @@ class App extends Component {
     }
 
     // only icon or text possible not both
-    this.steps = [
-      {
-        text: '1',
-        icon: 'fa-user',
-        shapeBorderColor: 'green',
-        shapeBackgroundColor: 'white',
-        shapeContentColor: 'green',
-        enabled: true
-      },
-      {
-        text: '2',
-        icon: 'fa-server',
-        shapeBorderColor: '#f4b042',
-        shapeBackgroundColor: 'white',
-        shapeContentColor: '#f4b042',
-        enabled: false
-      },
-      {
-        text: '3',
-        icon: ' fa-home',
-        shapeBorderColor: '#4f6cc1',
-        shapeBackgroundColor: 'white',
-        shapeContentColor: '#4f6cc1',
-        enabled: false
-      },
-      {
-        text: '4',
-        icon: 'fa-check',
-        shapeBorderColor: '#ff5b3a',
-        shapeBackgroundColor: 'white',
-        shapeContentColor: '#ff5b3a',
-        enabled: false
-      }
-    ]
     this.state = {
+      steps : [
+        {
+          text: '1',
+          shapeBorderColor: 'green',
+          shapeBackgroundColor: 'white',
+          shapeContentColor: 'green',
+          enabled: true
+        },
+        {
+          text: '2',
+          icon: 'fa-server',
+          shapeBorderColor: '#f4b042',
+          shapeBackgroundColor: 'white',
+          shapeContentColor: '#f4b042',
+          enabled: true
+        },
+        {
+          text: '3',
+          icon: ' fa-home',
+          shapeBorderColor: '#4f6cc1',
+          shapeBackgroundColor: 'white',
+          shapeContentColor: '#4f6cc1',
+          enabled: false
+        },
+        {
+          text: '4',
+          icon: 'fa-check',
+          shapeBorderColor: '#ff5b3a',
+          shapeBackgroundColor: 'white',
+          shapeContentColor: '#ff5b3a',
+          enabled: false
+        }
+      ],
       currentStep: 0
     }
 
+
     // this.changeStepEnabled = this.changeStepEnabled.bind(this)
     this.changeCurrentStep = this.changeCurrentStep.bind(this)
+    this.changeStepEnabled = this.changeStepEnabled.bind(this) 
+    this.test = this.test.bind(this)
 
   }
 
 
-  changeStepEnabled() {
-    this.firstStepper.current.changeStepEnabled()
+  changeStepEnabled(stepIndex, enabled) {
+    const steps = this.state.steps
+    steps[stepIndex].enabled = enabled
+    console.log(steps)
+    this.setState({steps})
   }
 
 
-  changeCurrentStep(newCurrentStep) {
-    this.setState({
-      currentStep: newCurrentStep
-    })
-    //this.firstStepper.current.changeCurrentStep()
+  changeCurrentStep(currentStep) {
+    this.setState({currentStep})
   }
 
 
@@ -94,19 +95,57 @@ class App extends Component {
     }
   }
 
-
+  test(){
+    //this.changeStepEnabled(2, true)
+    this.setState({
+      steps : [
+        {
+          text: '9',
+          shapeBorderColor: 'brown',
+          shapeBackgroundColor: 'white',
+          shapeContentColor: 'green',
+          enabled: true
+        },
+        {
+          text: '1',
+          icon: 'fa-server',
+          shapeBorderColor: '#f4b042',
+          shapeBackgroundColor: 'white',
+          shapeContentColor: '#f4b042',
+          enabled: true
+        },
+        {
+          text: '2',
+          icon: ' fa-home',
+          shapeBorderColor: '#4f6cc1',
+          shapeBackgroundColor: 'white',
+          shapeContentColor: '#4f6cc1',
+          enabled: true
+        },
+        {
+          text: '3',
+          icon: 'fa-check',
+          shapeBorderColor: '#ff5b3a',
+          shapeBackgroundColor: 'white',
+          shapeContentColor: '#ff5b3a',
+          enabled: true
+        }
+      ],
+      currentStep: 0
+    })
+  }
 
   render() {
-    console.log("render")
+
     return (
       <div>
         <Stepper
-          ref={this.firstStepper}
-          style={this.stepperStyle}
-          steps={this.steps}
+          style={this.style}
+          steps={this.state.steps}
           currentStep={this.state.currentStep}
           changeCurrentStep={this.changeCurrentStep}
         />
+        <button onClick={this.test}>asdasd</button>
         {this.renderContent()}
       </div>
     )

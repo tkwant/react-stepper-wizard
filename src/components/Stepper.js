@@ -2,47 +2,42 @@ import React, { Component } from 'react'
 import Step from './Step'
 import './step.scss'
 import 'font-awesome/css/font-awesome.min.css';
+import { throws } from 'assert';
 class Stepper extends Component {
     constructor(props) {
         super()
-        this.style = props.style
-        this.steps = props.steps
-
-
+        this.updateView(props)
     }
 
+    updateView(props){
+        const obj = {
+            style: props.style,
+            steps: props.steps
+        }
+        if(!this.state){
+            this.state = obj
+        }else{
+            this.setState(obj)
+        }
+    }
+    componentWillReceiveProps(props){
+        this.updateView(props)
+    }
 
     render() {
-        console.log("render2")
         return (
-            <div style={this.style.container} className='container'>
-                {this.steps.map((step, i) => <Step
+            <div style={this.state.style.container} className='container'>
+                {this.state.steps.map((step, i) => <Step
+                    key= {i}
                     step = {step}
                     id= {i}
-                    style = {this.style}
-                    numberOfSteps= {this.steps.length}
+                    style = {this.state.style}
+                    numberOfSteps= {this.state.steps.length}
                     currentStep={this.props.currentStep}
-                    lineRight={i==this.steps.length-1?false:true}
+                    lineRight={i==this.state.steps.length-1?false:true}
                     lineLeft={i?true:false}
                     changeCurrentStep={this.props.changeCurrentStep}
                 />)}
-
-                {/* <div className='stepOuter' >
-                    <div className='stepShape' >
-                        <i className="shapeContent fa fa-spinner fa-spin"></i>
-                    </div>
-                    <div className='lineLeft'>
-                    </div>
-                    <div className='lineRight'>
-                    </div>
-                </div>
-                <div className='stepOuter'>
-                    <div className='stepShape'>
-                        <i className="shapeContent fa fa-fw fa-spinner fa-spin"></i>
-                    </div>
-                    <div className='lineLeft'>
-                    </div>
-                </div> */}
             </div>
         )
     }

@@ -4,12 +4,13 @@ import { throws } from 'assert';
 class Step extends Component {
     constructor(props) {
         super()
-        console.log('--------------props----------------------');
-        console.log(props);
-        console.log('------------------------------------');
-        // styling
+        this.updateView(props)
+        this.setCurrentStep = this.setCurrentStep.bind(this)
+    }
+
+    updateView(props){
         const size = props.style.shape.size
-        this.state = {
+        const obj = {
             steperOuterStyle: {
                 width:`${100 / props.numberOfSteps}`
             },
@@ -39,45 +40,19 @@ class Step extends Component {
                 padding: props.style.line.padding,
                 top: size/2,
                 marginLeft: size/2 + props.style.shape.borderWidth +props.style.line.padding
-            }
+            },
+            enabled: props.step.enabled
         }
-        this.setCurrentStep = this.setCurrentStep.bind(this)
+        if(!this.state){
+            this.state = obj
+        }else{
+            this.setState(obj)
+        }
     }
-    // componentWillUpdate(props) {
-    //         this.setCurrentStepView(props)
-    // }
+
 
     componentWillReceiveProps(props){
-        this.setCurrentStepView(props)
-    }
-
-    setCurrentStepView(props){
-
-        if (props.currentStep === props.id) {
-            this.setState({
-                shapeStyle:{
-                    ...this.state.shapeStyle,
-                    backgroundColor: props.step.shapeBorderColor,
-                },
-                shapeContentStyle:{
-                    ...this.state.shapeContentStyle,
-                    color: props.step.shapeBackgroundColor
-                }
-            })
-            // this.shapeStyle.backgroundColor = props.step.shapeBorderColor
-            // this.shapeContentStyle.color = '#fff'
-        }else{
-            this.setState({
-                shapeStyle:{
-                    ...this.state.shapeStyle,
-                    backgroundColor: props.step.shapeBackgroundColor,
-                },
-                shapeContentStyle:{
-                    ...this.state.shapeContentStyle,
-                    color: props.step.shapeBorderColor
-                }
-            })
-        }
+        this.updateView(props)
     }
 
     renderLineRight() {
@@ -105,11 +80,18 @@ class Step extends Component {
         this.props.changeCurrentStep(parseInt(newCurrentStep))
     }
 
+    renderDisabled(){
+        if(!this.state.enabled){
+            return <div className='disabled'></div>
+        }
+    }
+
     render() {
         return (
             <div style={this.state.steperOuterStyle} className='stepOuter'>
-                <div data-ref={this.props.id} style={this.state.shapeStyle} className=' shape disabled' onClick={this.setCurrentStep}>
+                <div data-ref={this.props.id} style={this.state.shapeStyle} className='shape' onClick={this.setCurrentStep}>
                     <i style={this.state.shapeContentStyle} className={`shapeContent fa ${this.props.step.icon}`}>{this.props.step.icon ? '' : this.props.step.text}</i>
+                    {this.renderDisabled()}
                 </div>
                 {this.renderLineRight()}
                 {this.renderLineLeft()}
