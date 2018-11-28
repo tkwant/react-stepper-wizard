@@ -14,7 +14,7 @@ class App extends Component {
         paddingBottom: 24,       //pixel
       },
       shape:{
-        size: 80,
+        size: 70,
         borderWidth: 4,
         borderRadius: '50%',
       },
@@ -31,7 +31,7 @@ class App extends Component {
         text: '1',
         icon: 'fa-user',
         shapeBorderColor: 'green',
-        shapeBackgroundColor: '#fff',
+        shapeBackgroundColor: 'white',
         shapeContentColor: 'green',
         enabled: true
       },
@@ -39,7 +39,7 @@ class App extends Component {
         text: '2',
         icon: 'fa-server',
         shapeBorderColor: '#f4b042',
-        shapeBackgroundColor: '#fff',
+        shapeBackgroundColor: 'white',
         shapeContentColor: '#f4b042',
         enabled: false
       },
@@ -47,7 +47,7 @@ class App extends Component {
         text: '3',
         icon: ' fa-home',
         shapeBorderColor: '#4f6cc1',
-        shapeBackgroundColor: '#fff',
+        shapeBackgroundColor: 'white',
         shapeContentColor: '#4f6cc1',
         enabled: false
       },
@@ -55,7 +55,7 @@ class App extends Component {
         text: '4',
         icon: 'fa-check',
         shapeBorderColor: '#ff5b3a',
-        shapeBackgroundColor: '#fff',
+        shapeBackgroundColor: 'white',
         shapeContentColor: '#ff5b3a',
         enabled: false
       }
@@ -64,7 +64,7 @@ class App extends Component {
       currentStep: 0
     }
 
-    this.changeStepEnabled = this.changeStepEnabled.bind(this)
+    // this.changeStepEnabled = this.changeStepEnabled.bind(this)
     this.changeCurrentStep = this.changeCurrentStep.bind(this)
 
   }

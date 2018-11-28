@@ -11,13 +11,6 @@ class Stepper extends Component {
 
     }
 
-    changeStepEnabled(){
-
-    }
-
-    changeCurrentStep(newStep){
-
-    }
 
     render() {
         console.log("render2")

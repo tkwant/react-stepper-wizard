@@ -4,10 +4,10 @@ import { throws } from 'assert';
 class Step extends Component {
     constructor(props) {
         super()
-        // styling
-        console.log('-----------props-------------------------');
+        console.log('--------------props----------------------');
         console.log(props);
         console.log('------------------------------------');
+        // styling
         const size = props.style.shape.size
         this.state = {
             steperOuterStyle: {
@@ -19,12 +19,12 @@ class Step extends Component {
                 borderWidth: props.style.shape.borderWidth,
                 borderRadius: props.style.shape.borderRadius,
                 borderColor: props.step.shapeBorderColor,
-                backgroundColor: props.step.shapeBackgroundColor
+                backgroundColor: props.currentStep == props.id ? props.step.shapeBorderColor:props.step.shapeBackgroundColor
             },
             shapeContentStyle: {
                 fontSize: `${size / 2.2}px`,
                 lineHeight: `${size}px`,
-                color: props.step.shapeContentColor
+                color: props.currentStep == props.id ?props.step.shapeBackgroundColor :props.step.shapeContentColor
             },
             lineLeftStyle:{
                 borderWidth: props.style.line.borderWidth,
@@ -52,9 +52,7 @@ class Step extends Component {
     }
 
     setCurrentStepView(props){
-        console.log('------------props------------------------');
-        console.log(props);
-        console.log('------------------------------------');
+
         if (props.currentStep === props.id) {
             this.setState({
                 shapeStyle:{
@@ -63,7 +61,7 @@ class Step extends Component {
                 },
                 shapeContentStyle:{
                     ...this.state.shapeContentStyle,
-                    color: '#fff'
+                    color: props.step.shapeBackgroundColor
                 }
             })
             // this.shapeStyle.backgroundColor = props.step.shapeBorderColor
@@ -72,7 +70,7 @@ class Step extends Component {
             this.setState({
                 shapeStyle:{
                     ...this.state.shapeStyle,
-                    backgroundColor: '#fff',
+                    backgroundColor: props.step.shapeBackgroundColor,
                 },
                 shapeContentStyle:{
                     ...this.state.shapeContentStyle,
@@ -81,11 +79,7 @@ class Step extends Component {
             })
         }
     }
-    componentDidUpdate(){
-        console.log('----------this.state--------------------------');
-        console.log(this.state);
-        console.log('------------------------------------');
-    }
+
     renderLineRight() {
         if (this.props.lineRight) {
             return (
