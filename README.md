@@ -3,8 +3,9 @@
 
 
 ![example](example.png)
+#### Installation
 
-
+```npm i react-stepper-wizard```
 
 #### Stepper Prop
 
