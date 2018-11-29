@@ -31,3 +31,5 @@ to run example
 then open Browser: localhost:9001
 
 
+You can dissable and enable steps.
+You can use an icon (font awesome icon)  or text 
