@@ -9,7 +9,7 @@ class Step extends Component {
     }
 
     updateView(props){
-        const size = props.style.shape.size
+        const size = props.style.shape.size        
         const obj = {
             steperOuterStyle: {
                 width:`${100 / props.numberOfSteps}`
@@ -40,6 +40,10 @@ class Step extends Component {
                 padding: props.style.line.padding,
                 top: size/2,
                 marginLeft: size/2 + props.style.shape.borderWidth +props.style.line.padding
+            },
+            disabledStyle:{
+                height:size + props.style.shape.borderWidth*2,
+                width: size + props.style.shape.borderWidth*2,
             },
             enabled: props.step.enabled
         }
@@ -76,13 +80,19 @@ class Step extends Component {
         }
     }
     setCurrentStep(e) {
-        const newCurrentStep = e.currentTarget.getAttribute('data-ref')
-        this.props.changeCurrentStep(parseInt(newCurrentStep))
+        console.log('----------eeeeeee--------------------------');
+        console.log();
+        console.log('------------------------------------');
+        if(!e.currentTarget.children[1]){
+            const newCurrentStep = e.currentTarget.getAttribute('data-ref')
+            this.props.changeCurrentStep(parseInt(newCurrentStep))
+        }
+
     }
 
     renderDisabled(){
         if(!this.state.enabled){
-            return <div className='disabled'></div>
+            return <div style = {this.state.disabledStyle} className='disabled'></div>
         }
     }
 

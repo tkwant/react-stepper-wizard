@@ -25,8 +25,9 @@ class Stepper extends Component {
     }
 
     render() {
+        const isStyleSet = this.state.style
         return (
-            <div style={this.state.style.container} className='container'>
+            <div style={isStyleSet?this.state.style.container:''} className='container'>
                 {this.state.steps.map((step, i) => <Step
                     key= {i}
                     step = {step}

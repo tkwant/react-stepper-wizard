@@ -13,14 +13,14 @@ class App extends Component {
         paddingBottom: 24,       //pixel
       },
       shape:{
-        size: 70,
+        size: 80,
         borderWidth: 4,
         borderRadius: '50%',
       },
       line: {
         borderWidth: 3,
         borderColor: 'gray',
-        padding: 4
+        padding: 20
       }
     }
 
@@ -29,6 +29,7 @@ class App extends Component {
       steps : [
         {
           text: '1',
+          icon: 'fa-server',
           shapeBorderColor: 'green',
           shapeBackgroundColor: 'white',
           shapeContentColor: 'green',
@@ -74,7 +75,6 @@ class App extends Component {
   changeStepEnabled(stepIndex, enabled) {
     const steps = this.state.steps
     steps[stepIndex].enabled = enabled
-    console.log(steps)
     this.setState({steps})
   }
 
@@ -96,43 +96,7 @@ class App extends Component {
   }
 
   test(){
-    //this.changeStepEnabled(2, true)
-    this.setState({
-      steps : [
-        {
-          text: '9',
-          shapeBorderColor: 'brown',
-          shapeBackgroundColor: 'white',
-          shapeContentColor: 'green',
-          enabled: true
-        },
-        {
-          text: '1',
-          icon: 'fa-server',
-          shapeBorderColor: '#f4b042',
-          shapeBackgroundColor: 'white',
-          shapeContentColor: '#f4b042',
-          enabled: true
-        },
-        {
-          text: '2',
-          icon: ' fa-home',
-          shapeBorderColor: '#4f6cc1',
-          shapeBackgroundColor: 'white',
-          shapeContentColor: '#4f6cc1',
-          enabled: true
-        },
-        {
-          text: '3',
-          icon: 'fa-check',
-          shapeBorderColor: '#ff5b3a',
-          shapeBackgroundColor: 'white',
-          shapeContentColor: '#ff5b3a',
-          enabled: true
-        }
-      ],
-      currentStep: 0
-    })
+    this.changeStepEnabled(2, true)
   }
 
   render() {
