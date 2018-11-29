@@ -1,11 +1,13 @@
 # React-Stepper-Wizard
 
 
-
+### Example 1
 ![example](example.png)
 
+(___) 
+### Example 2
 ![example2](example2.png)
-
+(___) 
 ## Installation
 
 ```npm i react-stepper-wizard```
