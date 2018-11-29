@@ -80,9 +80,6 @@ class Step extends Component {
         }
     }
     setCurrentStep(e) {
-        console.log('----------eeeeeee--------------------------');
-        console.log();
-        console.log('------------------------------------');
         if(!e.currentTarget.children[1]){
             const newCurrentStep = e.currentTarget.getAttribute('data-ref')
             this.props.changeCurrentStep(parseInt(newCurrentStep))

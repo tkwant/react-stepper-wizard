@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Stepper from './components/Stepper'
+// import Stepper from './components/Stepper'
+import Stepper from '../dist/components/Stepper'
 import Template1 from './components/templates/Template1'
 import Template2 from './components/templates/Template2'
 import Template3 from './components/templates/Template3'
@@ -41,7 +42,7 @@ class App extends Component {
           shapeBorderColor: '#f4b042',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#f4b042',
-          enabled: true
+          enabled: false
         },
         {
           text: '3',
@@ -62,12 +63,8 @@ class App extends Component {
       ],
       currentStep: 0
     }
-
-
-    // this.changeStepEnabled = this.changeStepEnabled.bind(this)
     this.changeCurrentStep = this.changeCurrentStep.bind(this)
     this.changeStepEnabled = this.changeStepEnabled.bind(this) 
-    this.test = this.test.bind(this)
 
   }
 
@@ -95,12 +92,7 @@ class App extends Component {
     }
   }
 
-  test(){
-    this.changeStepEnabled(2, true)
-  }
-
   render() {
-
     return (
       <div>
         <Stepper
@@ -109,8 +101,7 @@ class App extends Component {
           currentStep={this.state.currentStep}
           changeCurrentStep={this.changeCurrentStep}
         />
-        <button onClick={this.test}>asdasd</button>
-        {this.renderContent()}
+        {/* {this.renderContent()} */}
       </div>
     )
   }

@@ -1,24 +1,29 @@
 {
-  "name": "minimal-react-webpack-babel-setup",
+  "name": "react-stepper-wizard",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "transpile": "babel src -d dist --copy-files"
   },
   "keywords": [],
   "author": "Tobias Kwant",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.4",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "style-loader": "^0.23.1",
     "css-loader": "^1.0.1",
     "file-loader": "^2.0.0",
+    "jest": "^23.6.0",
     "node-sass": "^4.10.0",
     "react-hot-loader": "^4.3.11",
+    "regenerator-runtime": "^0.13.1",
     "sass-loader": "^7.1.0",
     "url-loader": "^1.1.2",
     "webpack": "^4.26.0",
@@ -28,7 +33,6 @@
   "dependencies": {
     "font-awesome": "^4.7.0",
     "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "style-loader": "^0.23.1"
+    "react-dom": "^16.6.0"
   }
 }
