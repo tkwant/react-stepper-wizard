@@ -3,11 +3,11 @@
 
 
 ![example](example.png)
-### Installation
+## Installation
 
 ```npm i react-stepper-wizard```
 
-### Stepper Prop
+## Stepper Prop
 
 Prop | Value
 ------------ | -------------
@@ -16,8 +16,8 @@ steps | object
 currentStep | integer
 changeCurrentStep | function
 
-### Usage
-## App.js
+## Usage
+### App.js
 ```
 import React, { Component } from 'react'
 import Stepper from '../dist/components/Stepper'
@@ -131,7 +131,7 @@ class App extends Component {
 
 export default App
 ```
-## Template1.js
+### Template1.js
 ```
 import React, {Component} from 'react'
 
@@ -156,7 +156,7 @@ class Template extends Component{
 
 export default Template
 ```
-### Example (See Example folder)
+## Example (See Example folder)
 to run example
 
 ```git clone https://github.com/tkwant/react-stepper-wizard.git```
