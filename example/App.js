@@ -3,6 +3,7 @@ import Stepper from '../dist/components/Stepper'
 import Template1 from './components/templates/Template1'
 import Template2 from './components/templates/Template2'
 import Template3 from './components/templates/Template3'
+import Template4 from './components/templates/Template4'
 class App extends Component {
   constructor() {
     super()
@@ -70,8 +71,10 @@ class App extends Component {
 
   changeStepEnabled(stepIndex, enabled) {
     const steps = this.state.steps
-    steps[stepIndex].enabled = enabled
-    this.setState({steps})
+    if(steps[stepIndex].enabled != enabled){
+      steps[stepIndex].enabled = enabled
+      this.setState({steps})
+    }
   }
 
 
@@ -86,7 +89,8 @@ class App extends Component {
       case 0: return (<Template1 changeStepEnabled={this.changeStepEnabled} />)
       case 1: return (<Template2 changeStepEnabled={this.changeStepEnabled} />)
       case 2: return (<Template3 changeStepEnabled={this.changeStepEnabled} />)
-      case 3: return (<div>Template4</div>)
+      case 3: return (<Template4 changeStepEnabled={this.changeStepEnabled} />)
+
 
     }
   }
