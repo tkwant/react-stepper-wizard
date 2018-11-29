@@ -4,45 +4,65 @@ import { throws } from 'assert';
 class Step extends Component {
     constructor(props) {
         super()
-
-        this.stepOuterStyle = {
-            width: `${100 / props.numberOfSteps}`
-        }
-
-        this.shapeStyle = Object.assign({}, props.style.shape);
-        this.shapeStyle.height = this.shapeStyle.size
-        this.shapeStyle.width = this.shapeStyle.size
-
-        this.shapeContentStyle = {
-            ...props.style.shapeContent,
-            ...{
-                fontSize: `${this.shapeStyle.size / 2}px`,
-                lineHeight: `${this.shapeStyle.size}px`
-            }
-        }
-        if(props.lineLeft){
-            this.lineLeftStyle = Object.assign({}, props.style.line);
-            this.lineLeftStyle.top = this.shapeStyle.size / 2
-            this.lineLeftStyle.marginRight = this.shapeStyle.size/2 + this.shapeStyle.borderWidth +this.lineLeftStyle.padding
-        }
-        if(props.lineRight){
-            this.lineRightStyle = Object.assign({}, props.style.line);
-            this.lineRightStyle.top = this.shapeStyle.size / 2
-            this.lineRightStyle.marginLeft = this.shapeStyle.size/2 + this.shapeStyle.borderWidth +this.lineRightStyle.padding
-        }
-
-
-
-        delete this.shapeStyle.size
-        console.log('-----------step props-------------------------');
-        console.log(props);
-        console.log('------------------------------------');
+        this.updateView(props)
         this.setCurrentStep = this.setCurrentStep.bind(this)
     }
+
+    updateView(props){
+        const size = props.style.shape.size        
+        const obj = {
+            steperOuterStyle: {
+                width:`${100 / props.numberOfSteps}`
+            },
+            shapeStyle: {
+                height:size,
+                width: size,
+                borderWidth: props.style.shape.borderWidth,
+                borderRadius: props.style.shape.borderRadius,
+                borderColor: props.step.shapeBorderColor,
+                backgroundColor: props.currentStep == props.id ? props.step.shapeBorderColor:props.step.shapeBackgroundColor
+            },
+            shapeContentStyle: {
+                fontSize: `${size / 2.2}px`,
+                lineHeight: `${size}px`,
+                color: props.currentStep == props.id ?props.step.shapeBackgroundColor :props.step.shapeContentColor
+            },
+            lineLeftStyle:{
+                borderWidth: props.style.line.borderWidth,
+                borderColor: props.style.line.borderColor,
+                padding: props.style.line.padding,
+                top: size/2,
+                marginRight: size/2 + props.style.shape.borderWidth +props.style.line.padding
+            },
+            lineRightStyle:{
+                borderWidth: props.style.line.borderWidth,
+                borderColor: props.style.line.borderColor,
+                padding: props.style.line.padding,
+                top: size/2,
+                marginLeft: size/2 + props.style.shape.borderWidth +props.style.line.padding
+            },
+            disabledStyle:{
+                height:size + props.style.shape.borderWidth*2,
+                width: size + props.style.shape.borderWidth*2,
+            },
+            enabled: props.step.enabled
+        }
+        if(!this.state){
+            this.state = obj
+        }else{
+            this.setState(obj)
+        }
+    }
+
+
+    componentWillReceiveProps(props){
+        this.updateView(props)
+    }
+
     renderLineRight() {
         if (this.props.lineRight) {
             return (
-                <div style={this.lineRightStyle} className='lineRight'>
+                <div style={this.state.lineRightStyle} className='lineRight'>
                 </div>
             )
         } else {
@@ -52,7 +72,7 @@ class Step extends Component {
     renderLineLeft() {
         if (this.props.lineLeft) {
             return (
-                <div style={this.lineLeftStyle} className='lineLeft'>
+                <div style={this.state.lineLeftStyle} className='lineLeft'>
                 </div>
             )
         } else {
@@ -60,15 +80,25 @@ class Step extends Component {
         }
     }
     setCurrentStep(e) {
-        const newCurrentStep = e.currentTarget.getAttribute('data-ref')
-        this.props.changeCurrentStep(parseInt(newCurrentStep))
+        if(!e.currentTarget.children[1]){
+            const newCurrentStep = e.currentTarget.getAttribute('data-ref')
+            this.props.changeCurrentStep(parseInt(newCurrentStep))
+        }
+
+    }
+
+    renderDisabled(){
+        if(!this.state.enabled){
+            return <div style = {this.state.disabledStyle} className='disabled'></div>
+        }
     }
 
     render() {
         return (
-            <div style={this.stepOuterStyle} className='stepOuter'>
-                <div data-ref={this.props.id} style={this.shapeStyle} className=' shape disabled' onClick={this.setCurrentStep}>
-                    <i style={this.shapeContentStyle} className="shapeContent fa fa-fw fa-spinner fa-spin"></i>
+            <div style={this.state.steperOuterStyle} className='stepOuter'>
+                <div data-ref={this.props.id} style={this.state.shapeStyle} className='shape' onClick={this.setCurrentStep}>
+                    <i style={this.state.shapeContentStyle} className={`shapeContent fa ${this.props.step.icon}`}>{this.props.step.icon ? '' : this.props.step.text}</i>
+                    {this.renderDisabled()}
                 </div>
                 {this.renderLineRight()}
                 {this.renderLineLeft()}
