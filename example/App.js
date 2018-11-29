@@ -14,7 +14,7 @@ class App extends Component {
         paddingBottom: 24,       //pixel
       },
       shape:{
-        size: 80,
+        size: 90,
         borderWidth: 4,
         borderRadius: '50%',
       },
