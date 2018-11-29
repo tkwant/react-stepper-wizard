@@ -3,6 +3,9 @@
 
 
 ![example](example.png)
+
+![example2](example2.png)
+
 ## Installation
 
 ```npm i react-stepper-wizard```
