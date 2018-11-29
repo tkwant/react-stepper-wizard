@@ -1,13 +1,2 @@
-// import Stepper from './Stepper';
-// export default Stepper;
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App'
-
-
-ReactDOM.render(
-  <App/>,
-  document.getElementById('app')
-);
-
-module.hot.accept();
+import Stepper from "./components/Stepper"
+export default Stepper

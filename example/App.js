@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import Stepper from './components/Stepper'
 import Stepper from '../dist/components/Stepper'
 import Template1 from './components/templates/Template1'
 import Template2 from './components/templates/Template2'
@@ -101,7 +100,7 @@ class App extends Component {
           currentStep={this.state.currentStep}
           changeCurrentStep={this.changeCurrentStep}
         />
-        {/* {this.renderContent()} */}
+        {this.renderContent()}
       </div>
     )
   }
