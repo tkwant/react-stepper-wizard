@@ -8,7 +8,15 @@
     "test": "echo \"No test specified\" && exit 0",
     "transpile": "babel src -d dist --copy-files"
   },
-  "keywords": [],
+  "keywords": [    
+    "react",
+    "multistep",
+    "react",
+    "wizard",
+    "react",
+    "stepper",
+    "react"
+  ],
   "author": "Tobias Kwant",
   "license": "MIT",
   "devDependencies": {
