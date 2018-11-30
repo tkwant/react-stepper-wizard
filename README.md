@@ -23,6 +23,63 @@ steps | object
 currentStep | integer
 changeCurrentStep | function
 
+### Styleobject
+```
+this.style = {
+      container: {
+        paddingTop: 24,         
+        paddingBottom: 24,      
+      },
+      shape: {
+        size: 100,
+        borderWidth: 4,
+        borderRadius: '50%',
+      },
+      line: {
+        borderWidth: 3,
+        borderColor: 'gray',
+        padding: 30
+      }
+    }
+```
+### Stepsobject
+```
+      steps: [
+        {
+          text: '1',
+          icon: 'fa-server',
+          shapeBorderColor: 'green',
+          shapeBackgroundColor: 'white',
+          shapeContentColor: 'green',
+          enabled: true
+        },
+        {
+          text: '2',
+          icon: 'fa-server',
+          shapeBorderColor: '#f4b042',
+          shapeBackgroundColor: 'white',
+          shapeContentColor: '#f4b042',
+          enabled: false
+        },
+        {
+          text: '3',
+          icon: ' fa-home',
+          shapeBorderColor: '#4f6cc1',
+          shapeBackgroundColor: 'white',
+          shapeContentColor: '#4f6cc1',
+          enabled: false
+        },
+        {
+          text: '4',
+          icon: 'fa-check',
+          shapeBorderColor: '#ff5b3a',
+          shapeBackgroundColor: 'white',
+          shapeContentColor: '#ff5b3a',
+          enabled: false
+        }
+      ],
+```
+
 ## Usage
 ### App.js
 ```
