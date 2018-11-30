@@ -1,33 +1,33 @@
 import React, { Component } from 'react'
-import Stepper from '../dist/components/Stepper'
-import Template1 from './components/templates/Template1'
-import Template2 from './components/templates/Template2'
-import Template3 from './components/templates/Template3'
-import Template4 from './components/templates/Template4'
-class App extends Component {
+import Stepper from '../../dist/components/Stepper'
+import Template1 from './templatesExample1/Template1'
+import Template2 from './templatesExample1/Template2'
+import Template3 from './templatesExample1/Template3'
+import Template4 from './templatesExample1/Template4'
+class Example1 extends Component {
   constructor() {
     super()
     //style is optional
     this.style = {
-      container:{
+      container: {
         paddingTop: 24,          //pixel
         paddingBottom: 24,       //pixel
       },
-      shape:{
-        size: 90,
+      shape: {
+        size: 100,
         borderWidth: 4,
         borderRadius: '50%',
       },
       line: {
         borderWidth: 3,
         borderColor: 'gray',
-        padding: 20
+        padding: 30
       }
     }
 
     // only icon or text possible not both
     this.state = {
-      steps : [
+      steps: [
         {
           text: '1',
           icon: 'fa-server',
@@ -64,22 +64,22 @@ class App extends Component {
       currentStep: 0
     }
     this.changeCurrentStep = this.changeCurrentStep.bind(this)
-    this.changeStepEnabled = this.changeStepEnabled.bind(this) 
+    this.changeStepEnabled = this.changeStepEnabled.bind(this)
 
   }
 
 
   changeStepEnabled(stepIndex, enabled) {
     const steps = this.state.steps
-    if(steps[stepIndex].enabled != enabled){
+    if (steps[stepIndex].enabled != enabled) {
       steps[stepIndex].enabled = enabled
-      this.setState({steps})
+      this.setState({ steps })
     }
   }
 
 
   changeCurrentStep(currentStep) {
-    this.setState({currentStep})
+    this.setState({ currentStep })
   }
 
 
@@ -98,21 +98,38 @@ class App extends Component {
   render() {
     return (
       <div>
+        <hr
+          style={{
+            color: 'gray',
+            backgroundColor: 'gray',
+            height: 1
+          }}
+        />
         <Stepper
           style={this.style}
           steps={this.state.steps}
           currentStep={this.state.currentStep}
           changeCurrentStep={this.changeCurrentStep}
         />
+        <hr
+          style={{
+            color: 'gray',
+            backgroundColor: 'gray',
+            height: 1
+          }}
+        />
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+
         {this.renderContent()}
       </div>
     )
   }
 }
 
-export default App
-
-
-
+export default Example1
 
 

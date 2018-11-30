@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import { throws } from 'assert';
 
 
 // Using Redux would be a better solution to store State
@@ -9,15 +10,11 @@ let state = {
 };
 
 
-class Template3 extends Component{
+class Template1 extends Component {
     constructor(props) {
         super(props);
         this.state = state
-
         this.handleInputChange = this.handleInputChange.bind(this);
-    }
-    componentWillUnmount() {
-       state = this.state
     }
 
     handleInputChange(e) {
@@ -32,28 +29,18 @@ class Template3 extends Component{
         }
     }
 
-    componentWillMount(){
-        this.update()
-    }
 
-    componentDidUpdate(){
-        this.update()
-    }
-    update(){
-        if(this.state.age && this.state.name){
-            this.props.changeStepEnabled(3, true)
-       }else{
-           this.props.changeStepEnabled(3, false)
-       }
-    }
+    componentWillUnmount() {
+        state = this.state
+     }
 
-    render() {
+     render() {
         return (
             <div style={{display: 'flex', justifyContent: 'center'}}>
             <form>
                 <br />
                 <label>
-                    your birthname:
+                    Name8:
               <input
                         name="name"
                         type="text"
@@ -63,7 +50,7 @@ class Template3 extends Component{
                 <br />
                 <br />
                 <label>
-                    How many dogs do you have?:
+                    Age8:
               <input
                         name="age"
                         type="number"
@@ -76,6 +63,4 @@ class Template3 extends Component{
     }
 }
 
-
-
-export default Template3
+export default Template1
