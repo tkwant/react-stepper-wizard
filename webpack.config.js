@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './example/index.js',
+  entry: './examples/index.js',
   module: {
     rules: [
       {
@@ -31,7 +31,7 @@ module.exports = {
     extensions: ['*', '.js', '.jsx']
   },
   output: {
-    path: __dirname + '/example',
+    path: __dirname + '/examples',
     publicPath: '/',
     filename: 'bundle.js'
   },
@@ -40,7 +40,7 @@ module.exports = {
   ],
   devtool: 'source-map',
   devServer: {
-    contentBase: './example',
+    contentBase: './examples',
     hot: true,
     port: 9001
   }
