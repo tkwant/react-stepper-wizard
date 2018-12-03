@@ -11,12 +11,12 @@ class App extends Component {
             <div>
                 <h1>Example 1</h1>
                 <Example1 />
-                <br />
+                {/* <br />
                 <br />
                 <br />
                 <br />
                 <h1> Example 2</h1>
-                <Example2 />
+                <Example2 /> */}
             </div>
         )
     }
