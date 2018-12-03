@@ -14,9 +14,6 @@ class Template1 extends Component {
     constructor(props) {
         super(props);
         this.state = props.data        
-        console.log('---------propsprops---------------------------');
-        console.log(props);
-        console.log('------------------------------------');
         this.handleInputChange = this.handleInputChange.bind(this);
 
     }
@@ -42,10 +39,7 @@ class Template1 extends Component {
         this.updateData()
     }
     updateData(){
-        //this.props.saveStateData(this.state)
-        //this.props.changeStepEnabled(1, true)
-        console.log(this)
-        this.props.saveStateData(this.state)
+        this.props.saveStateData(this.props.index, this.state)
         if(this.state.age && this.state.name){
             this.props.changeStepEnabled(1, true)
        }else{
@@ -65,7 +59,7 @@ class Template1 extends Component {
               <input
                         name="name"
                         type="text"
-                        // value={this.state.name}
+                        value={this.state.name}
                         onChange={this.handleInputChange} />
                 </label>
                 <br />
@@ -75,7 +69,7 @@ class Template1 extends Component {
               <input
                         name="age"
                         type="number"
-                        // value={this.state.age}
+                        value={this.state.age}
                         onChange={this.handleInputChange} />
                 </label>
             </form>

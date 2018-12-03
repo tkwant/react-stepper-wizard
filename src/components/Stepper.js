@@ -6,23 +6,10 @@ import { throws } from 'assert';
 class Stepper extends Component {
     constructor(props) {
         super()
-
         this.updateView(props)
-        this.changeStepEnabled = this.changeStepEnabled.bind(this)
-        this.saveStateData = this.saveStateData.bind(this)
     }
 
-    changeStepEnabled(stepIndex, enabled) {
-        console.log('------------------------------------');
-        console.log("golum");
-        console.log('------------------------------------');
-    }
 
-    saveStateData(stepIndex, newState){
-        console.log('------------------------------------');
-        console.log("zzzzzzzzz");
-        console.log('------------------------------------');
-    }
 
     updateView(props) {
 
@@ -37,15 +24,22 @@ class Stepper extends Component {
         }
     }
     componentWillReceiveProps(props) {
+        console.log('------------------------------------');
+        console.log(props);
+        console.log('------------------------------------');
         this.updateView(props)
     }
 
     renderContent() {
+        console.log('--------------this.props.currentStep----------------------');
+        console.log(this.props.steps[this.props.currentStep].data);
+        console.log('------------------------------------');
         let element = React.cloneElement(
             this.props.steps[this.props.currentStep].content,
             {
                 saveStateData: this.props.saveStateData,
-                changeStepEnabled: this.props.changeStepEnabled
+                changeStepEnabled: this.props.changeStepEnabled,
+                data: this.props.steps[this.props.currentStep].data
             }
         )
         return element

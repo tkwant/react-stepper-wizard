@@ -62,7 +62,8 @@ class Example1 extends Component {
           data: TemplateData1,
           content: 
           <Template1 
-          data = {TemplateData1}
+          // data = {TemplateData1}
+          index= {0}
           />
         },
         {
@@ -75,7 +76,8 @@ class Example1 extends Component {
           data: TemplateData2,
           content: 
           <Template2 
-          data = {TemplateData2}
+          // data = {TemplateData2}
+          index= {1}
           />
         },
         {
@@ -91,7 +93,8 @@ class Example1 extends Component {
           },
           content: 
           <Template3 
-          data = {TemplateData3}
+          // data = {TemplateData3}
+          index= {2}
           />
         },
         {
@@ -107,7 +110,8 @@ class Example1 extends Component {
           },
           content: 
           <Template4 
-          data = {TemplateData4}
+          // data = {TemplateData4}
+          index= {3}
           />
         }
       ],
@@ -120,17 +124,15 @@ class Example1 extends Component {
 
   }
 
+  // this will always call twice because 
+  saveStateData(stepIndex, newState) {
+    const steps = this.state.steps
+    if(steps[stepIndex].data != newState){
+      steps[stepIndex].data = newState
+      this.setState({steps})
+    }
 
-  saveStateData(newState) {
-    console.log('--------newStatenewState----------------------------');
-    console.log(newState);
-    console.log('------------------------------------');
-    // console.log('---------this---------------------------');
-    // console.log(this);
-    // console.log('------------------------------------');
-    // console.log('-----------this2-------------------------');
-    // console.log(this);
-    // console.log('------------------------------------');
+
     // const steps = this.state.steps
     // if (steps[stepIndex].enabled != enabled) {
     //   steps[stepIndex].enabled = enabled
@@ -151,12 +153,13 @@ class Example1 extends Component {
     this.setState({ currentStep })
   }
 
+componentDidUpdate(){
+}
 
 
 
 
   render() {
-    console.log("render");
     return (
       <div>
         <hr
