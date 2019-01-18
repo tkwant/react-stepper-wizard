@@ -4,22 +4,20 @@ import { throws } from 'assert';
 
 // Using Redux would be a better solution to store State
 // or store state in App component
-let state = {
-    age: "",
-    name: ""
-};
+
 
 
 class Template1 extends Component {
     constructor(props) {
         super(props);
-        this.state = state
+        this.state = {
+            name: '',
+            age: ''
+        }
 
         this.handleInputChange = this.handleInputChange.bind(this);
     }
-    componentWillUnmount() {
-       state = this.state
-    }
+
 
     handleInputChange(e) {
         if(e.currentTarget.name === "age"){
@@ -33,7 +31,10 @@ class Template1 extends Component {
         }
     }
 
-    componentWillMount(){
+    componentWillMount(props){
+        console.log('------------------------------------');
+        console.log(props);
+        console.log('------------------------------------');
         this.update()
     }
 
