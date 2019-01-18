@@ -1,14 +1,18 @@
 {
   "name": "react-stepper-wizard",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tkwant/react-stepper-wizard.git"
+  },
   "main": "dist/index.js",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "test": "echo \"No test specified\" && exit 0",
     "transpile": "babel src -d dist --copy-files"
   },
-  "keywords": [    
+  "keywords": [
     "react",
     "multistep",
     "react",

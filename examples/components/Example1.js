@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Stepper from '../../dist/components/Stepper'
+//import Stepper from '../../dist/components/Stepper'
+import Stepper from '../../src/components/Stepper'
 import Template1 from './templatesExample1/Template1'
 import Template2 from './templatesExample1/Template2'
 import Template3 from './templatesExample1/Template3'
@@ -27,6 +28,27 @@ class Example1 extends Component {
 
 
     // only icon or text possible not both
+
+    let TemplateData1= {
+      name: "",
+      age: ""
+    }
+
+    let TemplateData2 = {
+      name: "",
+      age: ""
+    }
+
+    let TemplateData3 = {
+      name: "",
+      age: ""
+    }
+
+    let TemplateData4 = {
+      name: "",
+      age: ""
+    }
+
     this.state = {
       steps: [
         {
@@ -35,7 +57,12 @@ class Example1 extends Component {
           shapeBorderColor: 'green',
           shapeBackgroundColor: 'white',
           shapeContentColor: 'green',
-          enabled: true
+          enabled: true,
+          data: TemplateData1,
+          content: 
+          <Template1 
+          data = {TemplateData1}
+          />
         },
         {
           text: '2',
@@ -43,7 +70,12 @@ class Example1 extends Component {
           shapeBorderColor: '#f4b042',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#f4b042',
-          enabled: false
+          enabled: false,
+          data: TemplateData2,
+          content: 
+          <Template2 
+          data = {TemplateData2}
+          />
         },
         {
           text: '3',
@@ -51,7 +83,15 @@ class Example1 extends Component {
           shapeBorderColor: '#4f6cc1',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#4f6cc1',
-          enabled: false
+          enabled: false,
+          data: {
+            prop1: "zzz",
+            prop2: "aaa"
+          },
+          content: 
+          <Template3 
+          data = {TemplateData3}
+          />
         },
         {
           text: '4',
@@ -59,12 +99,21 @@ class Example1 extends Component {
           shapeBorderColor: '#ff5b3a',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#ff5b3a',
-          enabled: false
+          enabled: false,
+          data: {
+            prop1: "zzz",
+            prop2: "aaa"
+          },
+          content: 
+          <Template4 
+          data = {TemplateData4}
+          />
         }
       ],
       currentStep: 0
     }
     this.changeCurrentStep = this.changeCurrentStep.bind(this)
+    this.saveStateData = this.saveStateData.bind(this)
     this.changeStepEnabled = this.changeStepEnabled.bind(this)
 
     this.template1 = <Template1 changeStepEnabled={this.changeStepEnabled} />
@@ -73,6 +122,23 @@ class Example1 extends Component {
     this.template4 = <Template4 changeStepEnabled={this.changeStepEnabled} />
   }
 
+
+  saveStateData(newState) {
+    console.log('--------newStatenewState----------------------------');
+    console.log(newState);
+    console.log('------------------------------------');
+    // console.log('---------this---------------------------');
+    // console.log(this);
+    // console.log('------------------------------------');
+    // console.log('-----------this2-------------------------');
+    // console.log(this);
+    // console.log('------------------------------------');
+    // const steps = this.state.steps
+    // if (steps[stepIndex].enabled != enabled) {
+    //   steps[stepIndex].enabled = enabled
+    //   this.setState({ steps })
+    // }
+  }
 
   changeStepEnabled(stepIndex, enabled) {
     const steps = this.state.steps
@@ -112,6 +178,7 @@ class Example1 extends Component {
   }
 
   render() {
+    console.log("render");
     return (
       <div>
         <hr
@@ -126,6 +193,8 @@ class Example1 extends Component {
           steps={this.state.steps}
           currentStep={this.state.currentStep}
           changeCurrentStep={this.changeCurrentStep}
+          saveStateData={this.saveStateData} 
+          changeStepEnabled ={this.changeStepEnabled}
         />
         <hr
           style={{
@@ -134,13 +203,6 @@ class Example1 extends Component {
             height: 1
           }}
         />
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-
-
-        {this.renderContent()}
       </div>
     )
   }
