@@ -26,7 +26,6 @@ class Example1 extends Component {
       }
     }
 
-    // enabled is not in data because selected Template wants to change enabledState of other Steps 
 
     // only icon or text possible not both
 
@@ -121,7 +120,10 @@ class Example1 extends Component {
     this.saveStateData = this.saveStateData.bind(this)
     this.changeStepEnabled = this.changeStepEnabled.bind(this)
 
-
+    this.template1 = <Template1 changeStepEnabled={this.changeStepEnabled} />
+    this.template2 = <Template2 changeStepEnabled={this.changeStepEnabled} /> 
+    this.template3 = <Template3 changeStepEnabled={this.changeStepEnabled} />
+    this.template4 = <Template4 changeStepEnabled={this.changeStepEnabled} />
   }
 
   // this will always call twice because 
@@ -157,7 +159,27 @@ componentDidUpdate(){
 }
 
 
+  renderContent() {
+    console.log('------------this.template1------------------------');
+    console.log(this.template1);
+    console.log('------------------------------------');
+    switch (this.state.currentStep) {
+      case 0: return (this.template1)
+      case 1: return (this.template2)
+      case 2: return (this.template3)
+      case 3: return (this.template4)
 
+
+    }
+    // return (
+    //   <div>
+    //     <Template1  style={this.state.currentStep === 0 ? {} : { display: 'none' }} changeStepEnabled={this.changeStepEnabled} />
+    //     <Template2 style={this.state.currentStep === 1 ? {} : { display: 'none' }} changeStepEnabled={this.changeStepEnabled} />
+    //     <Template3 style={this.state.currentStep === 2 ? {} : { display: 'none' }} changeStepEnabled={this.changeStepEnabled} />
+    //     <Template4 style={this.state.currentStep === 3 ? {} : { display: 'none' }} changeStepEnabled={this.changeStepEnabled} />
+    //   </div>
+    // )
+  }
 
   render() {
     return (
