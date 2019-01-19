@@ -33,22 +33,6 @@ class Template1 extends Component {
         }
     }
 
-    componentWillMount(){
-        this.update()
-    }
-
-    componentDidUpdate(){
-        this.update()
-    }
-    update(){
-        if(this.state.age && this.state.name){
-            this.props.changeStepEnabled(1, true)
-       }else{
-           this.props.changeStepEnabled(1, false)
-           this.props.changeStepEnabled(2, false)
-           this.props.changeStepEnabled(3, false)
-       }
-    }
 
     render() {
         return (

@@ -10,9 +10,10 @@ class Stepper extends Component {
     }
 
     updateView(props){
+        console.log(props);
         const obj = {
-            style: props.style,
-            steps: props.steps
+            style: props.stepperData.style,
+            steps: props.stepperData.steps
         }
         if(!this.state){
             this.state = obj
@@ -42,6 +43,7 @@ class Stepper extends Component {
             </div>
         )
     }
+
 }
 
 export default Stepper
