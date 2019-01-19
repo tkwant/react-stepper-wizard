@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
-import { throws } from 'assert';
 
-
-// Using Redux would be a better solution to store State
-// or store state in App component
 let state = {
     age: "",
     name: ""
@@ -18,46 +14,45 @@ class Template1 extends Component {
     }
 
     handleInputChange(e) {
-        if(e.currentTarget.name === "age"){
+        if (e.currentTarget.name === "age") {
             this.setState({
                 age: e.currentTarget.value
             })
-        }else{
+        } else {
             this.setState({
                 name: e.currentTarget.value
             })
         }
     }
 
-
     componentWillUnmount() {
         state = this.state
-     }
+    }
 
-     render() {
+    render() {
         return (
-            <div style={{display: 'flex', justifyContent: 'center'}}>
-            <form>
-                <br />
-                <label>
-                    Name:
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <form>
+                    <br />
+                    <label>
+                        Name:
               <input
-                        name="name"
-                        type="text"
-                        value={this.state.name}
-                        onChange={this.handleInputChange} />
-                </label>
-                <br />
-                <br />
-                <label>
-                    Age:
+                            name="name"
+                            type="text"
+                            value={this.state.name}
+                            onChange={this.handleInputChange} />
+                    </label>
+                    <br />
+                    <br />
+                    <label>
+                        Age:
               <input
-                        name="age"
-                        type="number"
-                        value={this.state.age}
-                        onChange={this.handleInputChange} />
-                </label>
-            </form>
+                            name="age"
+                            type="number"
+                            value={this.state.age}
+                            onChange={this.handleInputChange} />
+                    </label>
+                </form>
             </div>
         );
     }

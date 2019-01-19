@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
-import Stepper from '../../dist/react-stepper-wizard'
+import Stepper from '../../src/index'
 import Template1 from './templatesExample1/Template1'
 import Template2 from './templatesExample1/Template2'
 import Template3 from './templatesExample1/Template3'
 import Template4 from './templatesExample1/Template4'
 
-console.log(Stepper);
-
-
 class Example1 extends Component {
   constructor() {
     super()
-
-
     // only icon or text possible not both
     this.state = {
       //style is optional
