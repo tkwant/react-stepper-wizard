@@ -8,8 +8,10 @@ class Step extends Component {
         this.setCurrentStep = this.setCurrentStep.bind(this)
     }
 
-    updateView(props){
-        const size = props.style.shape.size        
+    updateView(props){                
+        const shapeStyle= props.style.shape
+        const lineStyle = props.style.line
+        const size = shapeStyle.size        
         const obj = {
             steperOuterStyle: {
                 width:`${100 / props.numberOfSteps}`
@@ -17,8 +19,8 @@ class Step extends Component {
             shapeStyle: {
                 height:size,
                 width: size,
-                borderWidth: props.style.shape.borderWidth,
-                borderRadius: props.style.shape.borderRadius,
+                borderWidth: shapeStyle.borderWidth,
+                borderRadius: shapeStyle.borderRadius,
                 borderColor: props.step.shapeBorderColor,
                 backgroundColor: props.currentStep == props.id ? props.step.shapeBorderColor:props.step.shapeBackgroundColor
             },
@@ -28,22 +30,22 @@ class Step extends Component {
                 color: props.currentStep == props.id ?props.step.shapeBackgroundColor :props.step.shapeContentColor
             },
             lineLeftStyle:{
-                borderWidth: props.style.line.borderWidth,
-                borderColor: props.style.line.borderColor,
-                padding: props.style.line.padding,
+                borderWidth: lineStyle.borderWidth,
+                borderColor: lineStyle.borderColor,
+                padding: lineStyle.padding,
                 top: size/2,
-                marginRight: size/2 + props.style.shape.borderWidth +props.style.line.padding
+                marginRight: size/2 + shapeStyle.borderWidth +lineStyle.padding
             },
             lineRightStyle:{
-                borderWidth: props.style.line.borderWidth,
-                borderColor: props.style.line.borderColor,
-                padding: props.style.line.padding,
+                borderWidth: lineStyle.borderWidth,
+                borderColor: lineStyle.borderColor,
+                padding: lineStyle.padding,
                 top: size/2,
-                marginLeft: size/2 + props.style.shape.borderWidth +props.style.line.padding
+                marginLeft: size/2 + shapeStyle.borderWidth +lineStyle.padding
             },
             disabledStyle:{
-                height:size + props.style.shape.borderWidth*2,
-                width: size + props.style.shape.borderWidth*2,
+                height:size + shapeStyle.borderWidth*2,
+                width: size + shapeStyle.borderWidth*2,
             },
             enabled: props.step.enabled
         }

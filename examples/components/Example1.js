@@ -8,34 +8,9 @@ class Example1 extends Component {
   constructor() {
     super()
 
-    this.state = {
-      templateData1: {
-        verified: false,
-        name: null,
-        age: null
-
-      },
-      templateData2: {
-        verified: false,
-        name: null,
-        age: null
-
-      },
-      templateData3: {
-        verified: false,
-        name: null,
-        age: null
-      },
-      templateData4: {
-        verified: false,
-        name: null,
-        age: null
-      },
-      currentStep: 0
-    }
 
     // only icon or text possible not both
-    this.stepperData={
+    this.state = {
       //style is optional
       style: {
         container: {
@@ -43,7 +18,7 @@ class Example1 extends Component {
           paddingBottom: 24,       //pixel
         },
         shape: {
-          size: 100,
+          size: 80,
           borderWidth: 4,
           borderRadius: '50%',
         },
@@ -53,13 +28,19 @@ class Example1 extends Component {
           padding: 30
         }
       },
-      steps:[
+      currentStep: 0,
+      steps: [
         {
           text: '1',
           icon: 'fa-server',
           shapeBorderColor: 'green',
           shapeBackgroundColor: 'white',
           shapeContentColor: 'green',
+          data: {
+            verified: false,
+            name: null,
+            age: null
+          },
         },
         {
           text: '2',
@@ -67,6 +48,12 @@ class Example1 extends Component {
           shapeBorderColor: '#f4b042',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#f4b042',
+          data: {
+            verified: false,
+            name: null,
+            age: null
+    
+          },
         },
         {
           text: '3',
@@ -74,6 +61,11 @@ class Example1 extends Component {
           shapeBorderColor: '#4f6cc1',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#4f6cc1',
+          data: {
+            verified: false,
+            name: null,
+            age: null
+          },
         },
         {
           text: '4',
@@ -81,11 +73,16 @@ class Example1 extends Component {
           shapeBorderColor: '#ff5b3a',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#ff5b3a',
+          data: {
+            verified: false,
+            name: null,
+            age: null
+          },
         }
       ]
     }
 
-    
+
     this.updateState = this.updateState.bind(this)
     this.changeCurrentStep = this.changeCurrentStep.bind(this)
 
@@ -93,7 +90,7 @@ class Example1 extends Component {
 
 
   updateState(newState) {
-    this.setState({newState})
+    this.setState({ newState })
   }
 
 
@@ -112,33 +109,31 @@ class Example1 extends Component {
     }
   }
 
+  renderGrayLine() {
+    return (
+      <hr
+        style={{
+          color: 'gray',
+          backgroundColor: 'gray',
+          height: 1
+        }}
+      />
+    )
+  }
+
   render() {
     return (
       <div>
-        <hr
-          style={{
-            color: 'gray',
-            backgroundColor: 'gray',
-            height: 1
-          }}
-        />
+        {this.renderGrayLine()}
         <Stepper
-          stepperData={this.stepperData}
-          state={this.state}
+          stepperData={this.state}
           changeCurrentStep={this.changeCurrentStep}
         />
-
-        <hr
-          style={{
-            color: 'gray',
-            backgroundColor: 'gray',
-            height: 1
-          }}
-        />
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        {this.renderGrayLine()}
+        <br />
+        <br />
+        <br />
+        <br />
 
 
         {this.renderContent()}
