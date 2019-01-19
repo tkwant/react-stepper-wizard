@@ -1,7 +1,8 @@
 // Example without disable Steps
 
 import React, { Component } from 'react'
-import Stepper from '../../dist/components/Stepper'
+//import Stepper from '../../dist/components/Stepper'
+import Stepper from '../../src/components/Stepper'
 import Template1 from './templatesExample2/Template1'
 import Template2 from './templatesExample2/Template2'
 import Template3 from './templatesExample2/Template3'
@@ -18,89 +19,79 @@ class Example2 extends Component {
   constructor() {
     super()
     //style is optional
-    this.style = {
-      container: {
-        paddingTop: 24,          //pixel
-        paddingBottom: 24,       //pixel
-      },
-      shape: {
-        size: 40,
-        borderWidth: 4,
-        borderRadius: '50%',
-      },
-      line: {
-        borderWidth: 3,
-        borderColor: 'gray',
-        padding: 0
-      }
-    }
-
-    // only icon or text possible not both
     this.state = {
+      style:{
+        container: {
+          paddingTop: 24,          //pixel
+          paddingBottom: 24,       //pixel
+        },
+        shape: {
+          size: 40,
+          borderWidth: 4,
+          borderRadius: '50%',
+        },
+        line: {
+          borderWidth: 3,
+          borderColor: 'gray',
+          padding: 0
+        }
+      },
       steps: [
         {
           text: '1',
           shapeBorderColor: '#ff5b3a',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#ff5b3a',
-          enabled: true
+          verified: true,
         },
         {
           text: '2',
           shapeBorderColor: '#ff5b3a',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#ff5b3a',
-          enabled: true
-        },
+          verified: true,        },
         {
           text: '3',
           shapeBorderColor: '#ff5b3a',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#ff5b3a',
-          enabled: true
-        },
+          verified: true,        },
         {
           text: '4',
           shapeBorderColor: '#ff5b3a',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#ff5b3a',
-          enabled: true
-        },
+          verified: true,        },
         {
           text: '5',
           shapeBorderColor: '#ff5b3a',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#ff5b3a',
-          enabled: true
-        },
+          verified: true,        },
         {
           text: '6',
           shapeBorderColor: '#ff5b3a',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#ff5b3a',
-          enabled: true
-        },
+          verified: true,        },
         {
           text: '7',
           shapeBorderColor: '#ff5b3a',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#ff5b3a',
-          enabled: true
-        },
+          verified: true,        },
         {
           text: '8',
           shapeBorderColor: '#ff5b3a',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#ff5b3a',
-          enabled: true
-        },
+          verified: true,        },
         {
           text: '9',
           shapeBorderColor: '#ff5b3a',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#ff5b3a',
-          enabled: true
-        }
+          verified: true,        }
       ],
       currentStep: 0
     }
@@ -110,8 +101,8 @@ class Example2 extends Component {
 
 
 
-  changeCurrentStep(currentStep) {
-    this.setState({ currentStep })
+  changeCurrentStep(newStep) {    
+    this.setState({ currentStep: newStep })
   }
 
 
@@ -132,32 +123,28 @@ class Example2 extends Component {
 
     }
   }
-
+  renderGrayLine() {
+    return (
+      <hr
+        style={{
+          color: 'gray',
+          backgroundColor: 'gray',
+          height: 1
+        }}
+      />
+    )
+  }
   render() {
     return (
       <div>
-        <hr
-          style={{
-            color: 'gray',
-            backgroundColor: 'gray',
-            height: 1
-          }}
-        />
+        {this.renderGrayLine()}
+
         <Stepper
-          style={this.style}
-          steps={this.state.steps}
-          currentStep={this.state.currentStep}
+          stepperData={this.state}
           changeCurrentStep={this.changeCurrentStep}
+
         />
-        <hr
-          style={{
-            color: 'gray',
-            backgroundColor: 'gray',
-            height: 1
-          }}
-        />
-                <br/>
-        <br/>
+        {this.renderGrayLine()}
         <br/>
         <br/>
         {this.renderContent()}
