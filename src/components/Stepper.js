@@ -9,8 +9,6 @@ class Stepper extends Component {
         this.updateView(props)
     }
     updateView(props) {
-        console.log(props);
-        
         const steps = props.stepperData.steps
         let next = true
         for (let [i, el] of Object.keys(steps).entries()) {
@@ -28,6 +26,11 @@ class Stepper extends Component {
                     steps[i + 1].enabled = false
                 }
             }
+        }
+
+        
+        if(!steps[props.stepperData.currentStep].enabled){
+            this.props.changeCurrentStep(props.stepperData.currentStep -1)
         }
     }
 

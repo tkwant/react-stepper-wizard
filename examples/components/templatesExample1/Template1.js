@@ -6,7 +6,7 @@ import React, { Component } from 'react'
 
 let state = { 
     name: "", 
-    age: 0    
+    age: ""  
 };
 
 
@@ -44,13 +44,10 @@ class Template1 extends Component {
     }
 
     nextStep(){
-
         this.props.changeCurrentStep(1)
     }
 
-    previousStep(){
 
-    }
 
 
     render() {
@@ -81,7 +78,6 @@ class Template1 extends Component {
 
             </form>
             <br/>
-            <button onClick={this.previousStep}>Previous</button>
             <br/>
             <button onClick={this.nextStep}>Next</button>
 
