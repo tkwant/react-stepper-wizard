@@ -1,36 +1,33 @@
 import React, { Component } from 'react'
-import Stepper from '../../dist/react-stepper-wizard'
+import Stepper from '../../src/index'
 import Template1 from './templatesExample1/Template1'
 import Template2 from './templatesExample1/Template2'
 import Template3 from './templatesExample1/Template3'
 import Template4 from './templatesExample1/Template4'
 
-console.log(Stepper);
-
-
 class Example1 extends Component {
   constructor() {
     super()
-    //style is optional
-    this.style = {
-      container: {
-        paddingTop: 24,          //pixel
-        paddingBottom: 24,       //pixel
-      },
-      shape: {
-        size: 100,
-        borderWidth: 4,
-        borderRadius: '50%',
-      },
-      line: {
-        borderWidth: 3,
-        borderColor: 'gray',
-        padding: 30
-      }
-    }
-
     // only icon or text possible not both
     this.state = {
+      //style is optional
+      style: {
+        container: {
+          paddingTop: 24,          //pixel
+          paddingBottom: 24,       //pixel
+        },
+        shape: {
+          size: 80,
+          borderWidth: 4,
+          borderRadius: '50%',
+        },
+        line: {
+          borderWidth: 3,
+          borderColor: 'gray',
+          padding: 30
+        }
+      },
+      currentStep: 0,
       steps: [
         {
           text: '1',
@@ -38,7 +35,7 @@ class Example1 extends Component {
           shapeBorderColor: 'green',
           shapeBackgroundColor: 'white',
           shapeContentColor: 'green',
-          enabled: true
+          verified: false,
         },
         {
           text: '2',
@@ -46,7 +43,7 @@ class Example1 extends Component {
           shapeBorderColor: '#f4b042',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#f4b042',
-          enabled: false
+          verified: false,
         },
         {
           text: '3',
@@ -54,7 +51,7 @@ class Example1 extends Component {
           shapeBorderColor: '#4f6cc1',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#4f6cc1',
-          enabled: false
+          verified: false,
         },
         {
           text: '4',
@@ -62,71 +59,67 @@ class Example1 extends Component {
           shapeBorderColor: '#ff5b3a',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#ff5b3a',
-          enabled: false
+          verified: false,
         }
-      ],
-      currentStep: 0
+      ]
     }
+
+
+    this.verify = this.verify.bind(this)
     this.changeCurrentStep = this.changeCurrentStep.bind(this)
-    this.changeStepEnabled = this.changeStepEnabled.bind(this)
 
   }
 
 
-  changeStepEnabled(stepIndex, enabled) {
+  verify(stepIndex, verified) {      
     const steps = this.state.steps
-    if (steps[stepIndex].enabled != enabled) {
-      steps[stepIndex].enabled = enabled
+    if (steps[stepIndex].verified != verified) {
+      steps[stepIndex].verified = verified
       this.setState({ steps })
     }
   }
 
 
-  changeCurrentStep(currentStep) {
-    this.setState({ currentStep })
+  changeCurrentStep(newStep) {    
+    this.setState({ currentStep: newStep })
   }
+
 
 
 
   renderContent() {
     switch (this.state.currentStep) {
-      case 0: return (<Template1 changeStepEnabled={this.changeStepEnabled} />)
-      case 1: return (<Template2 changeStepEnabled={this.changeStepEnabled} />)
-      case 2: return (<Template3 changeStepEnabled={this.changeStepEnabled} />)
-      case 3: return (<Template4 changeStepEnabled={this.changeStepEnabled} />)
-
-
+      case 0: return (<Template1 verify={this.verify} changeCurrentStep={this.changeCurrentStep} />)
+      case 1: return (<Template2 verify={this.verify} changeCurrentStep={this.changeCurrentStep}/>)
+      case 2: return (<Template3 verify={this.verify}  changeCurrentStep={this.changeCurrentStep}/>)
+      case 3: return (<Template4 verify={this.verify} changeCurrentStep={this.changeCurrentStep}/>)
     }
+  }
+
+  renderGrayLine() {
+    return (
+      <hr
+        style={{
+          color: 'gray',
+          backgroundColor: 'gray',
+          height: 1
+        }}
+      />
+    )
   }
 
   render() {
     return (
       <div>
-        <hr
-          style={{
-            color: 'gray',
-            backgroundColor: 'gray',
-            height: 1
-          }}
-        />
+        {this.renderGrayLine()}
         <Stepper
-          style={this.style}
-          steps={this.state.steps}
-          currentStep={this.state.currentStep}
+          stepperData={this.state}
           changeCurrentStep={this.changeCurrentStep}
         />
-        <hr
-          style={{
-            color: 'gray',
-            backgroundColor: 'gray',
-            height: 1
-          }}
-        />
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-
+        {this.renderGrayLine()}
+        <br />
+        <br />
+        
 
         {this.renderContent()}
       </div>

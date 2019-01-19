@@ -15,6 +15,9 @@ class Template2 extends Component{
         this.state = state
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.nextStep = this.nextStep.bind(this)
+        this.previousStep = this.previousStep.bind(this)
+
     }
     componentWillUnmount() {
        state = this.state
@@ -31,19 +34,25 @@ class Template2 extends Component{
             })
         }
     }
-    componentWillMount(){
-        this.update()
-    }
+
+
     componentDidUpdate(){
-        this.update()
+        if(this.state.name && this.state.age != 0){
+            this.props.verify(1,true)
+        }else{
+            this.props.verify(1,false)
+        }
+
     }
-    update(){
-        if(this.state.age && this.state.name){
-            this.props.changeStepEnabled(2, true)
-       }else{
-           this.props.changeStepEnabled(2, false)
-           this.props.changeStepEnabled(3, false)
-       }
+
+    nextStep(){
+
+        this.props.changeCurrentStep(2)
+    }
+
+    previousStep(){
+        this.props.changeCurrentStep(0)
+
     }
 
     render() {
@@ -70,6 +79,10 @@ class Template2 extends Component{
                         onChange={this.handleInputChange} />
                 </label>
             </form>
+            <button onClick={this.previousStep}>Previous</button>
+            <br/>
+            <button onClick={this.nextStep}>Next</button>
+
             </div>
         );
     }

@@ -8,40 +8,57 @@ class Stepper extends Component {
         super()
         this.updateView(props)
     }
+    updateView(props) {
+        const steps = props.stepperData.steps
+        let next = true
+        for (let [i, el] of Object.keys(steps).entries()) {
+            if (i == 0) {
+                steps[0].enabled = true
+            }
+            if (steps[el].verified && next) {
+                if (i < steps.length -1) {
+                    steps[i + 1].enabled = true
+                }
 
-    updateView(props){
-        const obj = {
-            style: props.style,
-            steps: props.steps
+            } else {
+                next = false
+                if (i < steps.length -1) {
+                    steps[i + 1].enabled = false
+                }
+            }
         }
-        if(!this.state){
-            this.state = obj
-        }else{
-            this.setState(obj)
+
+        
+        if(!steps[props.stepperData.currentStep].enabled){
+            this.props.changeCurrentStep(props.stepperData.currentStep -1)
         }
     }
-    componentWillReceiveProps(props){
+
+    componentWillReceiveProps(props) {
         this.updateView(props)
     }
 
+
+
     render() {
-        const isStyleSet = this.state.style
+        const isStyleSet = this.props.stepperData.style
         return (
-            <div style={isStyleSet?this.state.style.container:''} className='container'>
-                {this.state.steps.map((step, i) => <Step
-                    key= {i}
-                    step = {step}
-                    id= {i}
-                    style = {this.state.style}
-                    numberOfSteps= {this.state.steps.length}
-                    currentStep={this.props.currentStep}
-                    lineRight={i==this.state.steps.length-1?false:true}
-                    lineLeft={i?true:false}
+            <div style={isStyleSet ? this.props.stepperData.style.container : ''} className='container'>
+                {this.props.stepperData.steps.map((step, i) => <Step
+                    key={i}
+                    step={step}
+                    id={i}
+                    style={this.props.stepperData.style}
+                    numberOfSteps={this.props.stepperData.steps.length}
+                    currentStep={this.props.stepperData.currentStep}
+                    lineRight={i == this.props.stepperData.steps.length - 1 ? false : true}
+                    lineLeft={i ? true : false}
                     changeCurrentStep={this.props.changeCurrentStep}
                 />)}
             </div>
         )
     }
+
 }
 
 export default Stepper

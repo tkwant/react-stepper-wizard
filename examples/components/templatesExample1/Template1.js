@@ -1,24 +1,21 @@
 import React, { Component } from 'react'
-import { throws } from 'assert';
 
+// verified: false,
+// name: null,
+// age: null
 
-// Using Redux would be a better solution to store State
-// or store state in App component
-let state = {
-    age: "",
-    name: ""
+let state = { 
+    name: "", 
+    age: ""  
 };
 
 
 class Template1 extends Component {
     constructor(props) {
         super(props);
-        this.state = state
-
+        this.state = state;
         this.handleInputChange = this.handleInputChange.bind(this);
-    }
-    componentWillUnmount() {
-       state = this.state
+        this.nextStep = this.nextStep.bind(this)
     }
 
     handleInputChange(e) {
@@ -33,22 +30,25 @@ class Template1 extends Component {
         }
     }
 
-    componentWillMount(){
-        this.update()
-    }
+    componentWillUnmount() {
+        state = this.state;
+      }
 
     componentDidUpdate(){
-        this.update()
+        if(this.state.name && this.state.age != 0){
+            this.props.verify(0,true)
+        }else{
+            this.props.verify(0,false)
+        }
+
     }
-    update(){
-        if(this.state.age && this.state.name){
-            this.props.changeStepEnabled(1, true)
-       }else{
-           this.props.changeStepEnabled(1, false)
-           this.props.changeStepEnabled(2, false)
-           this.props.changeStepEnabled(3, false)
-       }
+
+    nextStep(){
+        this.props.changeCurrentStep(1)
     }
+
+
+
 
     render() {
         return (
@@ -72,8 +72,16 @@ class Template1 extends Component {
                         type="number"
                         value={this.state.age}
                         onChange={this.handleInputChange} />
-                </label>
+                </label> 
+
+
+
             </form>
+            <br/>
+            <br/>
+            <button onClick={this.nextStep}>Next</button>
+
+
             </div>
         );
     }
