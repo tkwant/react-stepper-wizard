@@ -1,7 +1,7 @@
 // Example without disable Steps
 
 import React, { Component } from 'react'
-import Stepper from '../../dist/components/Stepper'
+import Stepper from '../../dist/react-stepper-wizard'
 import Template1 from './templatesExample2/Template1'
 import Template2 from './templatesExample2/Template2'
 import Template3 from './templatesExample2/Template3'

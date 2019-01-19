@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
-import Stepper from '../../dist/components/Stepper'
+import Stepper from '../../dist/react-stepper-wizard'
 import Template1 from './templatesExample1/Template1'
 import Template2 from './templatesExample1/Template2'
 import Template3 from './templatesExample1/Template3'
 import Template4 from './templatesExample1/Template4'
+
+console.log(Stepper);
+
+
 class Example1 extends Component {
   constructor() {
     super()
