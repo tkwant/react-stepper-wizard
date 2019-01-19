@@ -32,6 +32,15 @@ class Template3 extends Component{
         }
     }
 
+    componentDidUpdate(){
+        if(this.state.name && this.state.age != 0){
+            this.props.verify(2,true)
+        }else{
+            this.props.verify(2,false)
+        }
+
+    }
+
 
 
     render() {

@@ -33,6 +33,15 @@ class Template2 extends Component{
     }
 
 
+    componentDidUpdate(){
+        if(this.state.name && this.state.age != 0){
+            this.props.verify(1,true)
+        }else{
+            this.props.verify(1,false)
+        }
+
+    }
+
     render() {
         return (
             <div style={{display: 'flex', justifyContent: 'center'}}>

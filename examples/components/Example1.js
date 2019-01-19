@@ -36,11 +36,7 @@ class Example1 extends Component {
           shapeBorderColor: 'green',
           shapeBackgroundColor: 'white',
           shapeContentColor: 'green',
-          data: {
-            verified: false,
-            name: null,
-            age: null
-          },
+          verified: false,
         },
         {
           text: '2',
@@ -48,12 +44,7 @@ class Example1 extends Component {
           shapeBorderColor: '#f4b042',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#f4b042',
-          data: {
-            verified: false,
-            name: null,
-            age: null
-    
-          },
+          verified: false,
         },
         {
           text: '3',
@@ -61,11 +52,7 @@ class Example1 extends Component {
           shapeBorderColor: '#4f6cc1',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#4f6cc1',
-          data: {
-            verified: false,
-            name: null,
-            age: null
-          },
+          verified: false,
         },
         {
           text: '4',
@@ -73,39 +60,40 @@ class Example1 extends Component {
           shapeBorderColor: '#ff5b3a',
           shapeBackgroundColor: 'white',
           shapeContentColor: '#ff5b3a',
-          data: {
-            verified: false,
-            name: null,
-            age: null
-          },
+          verified: false,
         }
       ]
     }
 
 
-    this.updateState = this.updateState.bind(this)
+    this.verify = this.verify.bind(this)
     this.changeCurrentStep = this.changeCurrentStep.bind(this)
 
   }
 
 
-  updateState(newState) {
-    this.setState({ newState })
+  verify(stepIndex, verified) {      
+    const steps = this.state.steps
+    if (steps[stepIndex].verified != verified) {
+      steps[stepIndex].verified = verified
+      this.setState({ steps })
+    }
   }
 
 
-  changeCurrentStep(newStep) {
-    this.setState({ newStep })
+  changeCurrentStep(newStep) {    
+    this.setState({ currentStep: newStep })
   }
+
 
 
 
   renderContent() {
     switch (this.state.currentStep) {
-      case 0: return (<Template1 updateState={this.updateState} data={this.state.templateData1} />)
-      case 1: return (<Template2 updateState={this.updateState} data={this.state.templateData2} />)
-      case 2: return (<Template3 updateState={this.updateState} data={this.state.templateData3} />)
-      case 3: return (<Template4 updateState={this.updateState} data={this.state.templateData4} />)
+      case 0: return (<Template1 verify={this.verify} changeCurrentStep={this.changeCurrentStep} />)
+      case 1: return (<Template2 verify={this.verify} changeCurrentStep={this.changeCurrentStep}/>)
+      case 2: return (<Template3 verify={this.verify}  changeCurrentStep={this.changeCurrentStep}/>)
+      case 3: return (<Template4 verify={this.verify} changeCurrentStep={this.changeCurrentStep}/>)
     }
   }
 
@@ -132,9 +120,7 @@ class Example1 extends Component {
         {this.renderGrayLine()}
         <br />
         <br />
-        <br />
-        <br />
-
+        
 
         {this.renderContent()}
       </div>
