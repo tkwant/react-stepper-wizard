@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
-import { throws } from 'assert';
+import { FormGroup, Input } from 'reactstrap';
 
-
-// Using Redux would be a better solution to store State
-// or store state in App component
 let state = {
-    age: "",
     name: ""
 };
 
 
-class Template1 extends Component {
+class Template3 extends Component {
     constructor(props) {
         super(props);
         this.state = state
@@ -18,49 +14,32 @@ class Template1 extends Component {
     }
 
     handleInputChange(e) {
-        if(e.currentTarget.name === "age"){
-            this.setState({
-                age: e.currentTarget.value
-            })
-        }else{
+        if (e.currentTarget.name === "name") {
             this.setState({
                 name: e.currentTarget.value
             })
         }
     }
 
-
     componentWillUnmount() {
         state = this.state
-     }
+    }
 
-     render() {
+    render() {
         return (
-            <div style={{display: 'flex', justifyContent: 'center'}}>
-            <form>
-                <br />
-                <label>
-                    Name3:
-              <input
-                        name="name"
-                        type="text"
-                        value={this.state.name}
-                        onChange={this.handleInputChange} />
-                </label>
-                <br />
-                <br />
-                <label>
-                    Age3:
-              <input
-                        name="age"
-                        type="number"
-                        value={this.state.age}
-                        onChange={this.handleInputChange} />
-                </label>
-            </form>
+            <div >
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>
+                <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                    <Input name="name" placeholder="3" onInput={this.handleInputChange} defaultValue= {this.state.name} />
+                </FormGroup>
+                </div>
             </div>
         );
     }
 }
 
-export default Template1
+export default Template3

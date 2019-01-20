@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
+import { Button, FormGroup, Input } from 'reactstrap';
 
-// verified: false,
-// name: null,
-// age: null
 
-let state = { 
-    name: "", 
-    age: ""  
+let state = {
+    name: "s",
 };
 
 
@@ -19,31 +16,27 @@ class Template1 extends Component {
     }
 
     handleInputChange(e) {
-        if(e.currentTarget.name === "age"){
-            this.setState({
-                age: e.currentTarget.value
-            })
-        }else{
+        if (e.currentTarget.name === "name") {
             this.setState({
                 name: e.currentTarget.value
             })
-        }
+        } 
     }
 
     componentWillUnmount() {
         state = this.state;
-      }
+    }
 
-    componentDidUpdate(){
-        if(this.state.name && this.state.age != 0){
-            this.props.verify(0,true)
-        }else{
-            this.props.verify(0,false)
+    componentDidUpdate() {
+        if (this.state.name ) {
+            this.props.verify(0, true)
+        } else {
+            this.props.verify(0, false)
         }
 
     }
 
-    nextStep(){
+    nextStep() {
         this.props.changeCurrentStep(1)
     }
 
@@ -52,37 +45,31 @@ class Template1 extends Component {
 
     render() {
         return (
-            <div style={{display: 'flex', justifyContent: 'center'}}>
-            <form>
-                <br />
-                <label>
-                    Name:
-              <input
-                        name="name"
-                        type="text"
-                        value={this.state.name}
-                        onChange={this.handleInputChange} />
-                </label>
-                <br />
-                <br />
-                <label>
-                    Age:
-              <input
-                        name="age"
-                        type="number"
-                        value={this.state.age}
-                        onChange={this.handleInputChange} />
-                </label> 
+            <div >
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>
+                <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                    <Input name="name" placeholder="Your Name" onInput={this.handleInputChange} defaultValue= {this.state.name} />
+                </FormGroup>
+                </div>
 
+                <br/>
+                
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>        
+                <Button onClick={this.nextStep}  style={{marginRight:"5px"}} color="success">Next</Button>{' '}
 
-
-            </form>
-            <br/>
-            <br/>
-            <button onClick={this.nextStep}>Next</button>
+                </div>
 
 
             </div>
+
         );
     }
 }

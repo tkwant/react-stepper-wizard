@@ -14,19 +14,19 @@ $linePadding: 10px;
 //shapeContent
 $shapeContentColor: green;
 
-.container{
+.container-stepper-wizard{
     padding-top: $containerPaddingTop;
     padding-bottom: $containerPaddingBottom;
     display: table;
     width: 100%;
     margin: 0px auto;
     min-height: 0px;
-    .stepOuter{
+    .step-outer-stepper-wizard{
         // width: 33.333%;
         display: table-cell;
         position: relative;
 
-        .shape {
+        .shape-stepper-wizard {
             width: $shapeSize;
             height: $shapeSize;
             border: $shapeBorderWidth solid $shapeBorderColor;
@@ -37,12 +37,14 @@ $shapeContentColor: green;
             padding: 0px;
             font-size: 16px;
             display: block;
-            .shapeContent{
+            box-sizing: unset;
+
+            .shape-content-stepper-wizard{
                 font-size: ($shapeSize/2);
                 line-height: $shapeSize;
                 color: $shapeContentColor;
             }
-            .disabled{
+            .disabled-stepper-wizard{
                 position: absolute;
                 top: 50%; 
                 left: 50%;
@@ -57,7 +59,7 @@ $shapeContentColor: green;
         }
 
 
-        .lineLeft{
+        .line-left-stepper-wizard{
             position: absolute;
             top: ($shapeSize / 2);
             border-top: $lineWidth solid $lineColor;
@@ -65,7 +67,7 @@ $shapeContentColor: green;
             left: 0px;
             margin-right: ($shapeSize /2 + $shapeBorderWidth + $linePadding);
         }
-        .lineRight{
+        .line-right-stepper-wizard{
             position: absolute;
             top: ($shapeSize / 2);
             border-top: $lineWidth solid $lineColor;
