@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-import Stepper from '../../src/index'
+import Stepper from '../../dist/react-stepper-wizard'
 import Template1 from './templatesExample1/Template1'
 import Template2 from './templatesExample1/Template2'
 import Template3 from './templatesExample1/Template3'
 import Template4 from './templatesExample1/Template4'
+import { Container, Row, Col,FormGroup, Label, Input  } from 'reactstrap';
+import JSONInput from 'react-json-editor-ajrm';
+import locale    from 'react-json-editor-ajrm/locale/en';
 
 class Example1 extends Component {
   constructor() {
@@ -24,7 +27,7 @@ class Example1 extends Component {
         line: {
           borderWidth: 3,
           borderColor: 'gray',
-          padding: 30
+          padding: 10
         }
       },
       currentStep: 0,
@@ -67,11 +70,11 @@ class Example1 extends Component {
 
     this.verify = this.verify.bind(this)
     this.changeCurrentStep = this.changeCurrentStep.bind(this)
-
+    this.jsonOnChange = this.jsonOnChange.bind(this)
   }
 
 
-  verify(stepIndex, verified) {      
+  verify(stepIndex, verified) {
     const steps = this.state.steps
     if (steps[stepIndex].verified != verified) {
       steps[stepIndex].verified = verified
@@ -80,7 +83,7 @@ class Example1 extends Component {
   }
 
 
-  changeCurrentStep(newStep) {    
+  changeCurrentStep(newStep) {
     this.setState({ currentStep: newStep })
   }
 
@@ -90,9 +93,9 @@ class Example1 extends Component {
   renderContent() {
     switch (this.state.currentStep) {
       case 0: return (<Template1 verify={this.verify} changeCurrentStep={this.changeCurrentStep} />)
-      case 1: return (<Template2 verify={this.verify} changeCurrentStep={this.changeCurrentStep}/>)
-      case 2: return (<Template3 verify={this.verify}  changeCurrentStep={this.changeCurrentStep}/>)
-      case 3: return (<Template4 verify={this.verify} changeCurrentStep={this.changeCurrentStep}/>)
+      case 1: return (<Template2 verify={this.verify} changeCurrentStep={this.changeCurrentStep} />)
+      case 2: return (<Template3 verify={this.verify} changeCurrentStep={this.changeCurrentStep} />)
+      case 3: return (<Template4 verify={this.verify} changeCurrentStep={this.changeCurrentStep} />)
     }
   }
 
@@ -108,21 +111,44 @@ class Example1 extends Component {
     )
   }
 
+  jsonOnChange(json){
+    this.setState(json.jsObject)
+  }
+
   render() {
     return (
-      <div>
-        {this.renderGrayLine()}
-        <Stepper
-          stepperData={this.state}
-          changeCurrentStep={this.changeCurrentStep}
-        />
-        {this.renderGrayLine()}
-        <br />
-        <br />
-        
+      <Container fluid>
+        <h1>Example 1</h1>
+        <Row>
+          <Col style={{ border: "3px solid black", overflowX: "scroll", padding: "0px" }} xs="3">
+          <JSONInput
+        id          = 'a_unique_id'
+        placeholder = { this.state }
 
-        {this.renderContent()}
-      </div>
+        onChange = {this.jsonOnChange}
+        theme="dark_vscode_tribute"
+        locale      = { locale }
+        height      = '360px'
+    />
+
+          </Col>
+          <Col style={{ border: "3px solid black" }} xs="9" >
+
+            <Stepper
+              stepperData={this.state}
+              changeCurrentStep={this.changeCurrentStep}
+            />
+            {this.renderGrayLine()}
+            <br />
+            <br />
+            {this.renderContent()}
+            <br/>
+        <br/>
+          </Col>
+        </Row>
+
+      </Container>
+
     )
   }
 }

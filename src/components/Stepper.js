@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import Step from './Step'
 import './step.scss'
-import 'font-awesome/css/font-awesome.min.css';
+import 'font-awesome/css/font-awesome.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-import { throws } from 'assert';
 class Stepper extends Component {
     constructor(props) {
         super()
