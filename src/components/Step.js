@@ -64,7 +64,7 @@ class Step extends Component {
     renderLineRight() {
         if (this.props.lineRight) {
             return (
-                <div style={this.state.lineRightStyle} className='lineRight'>
+                <div style={this.state.lineRightStyle} className='line-right-stepper-wizard'>
                 </div>
             )
         } else {
@@ -74,7 +74,7 @@ class Step extends Component {
     renderLineLeft() {
         if (this.props.lineLeft) {
             return (
-                <div style={this.state.lineLeftStyle} className='lineLeft'>
+                <div style={this.state.lineLeftStyle} className='line-left-stepper-wizard'>
                 </div>
             )
         } else {
@@ -91,14 +91,14 @@ class Step extends Component {
 
     renderDisabled(){
         if(!this.state.enabled){
-            return <div style = {this.state.disabledStyle} className='disabled'></div>
+            return <div style = {this.state.disabledStyle} className='disabled-stepper-wizard'></div>
         }
     }
 
     render() {
         return (
-            <div style={this.state.steperOuterStyle} className='stepOuter'>
-                <div data-ref={this.props.id} style={this.state.shapeStyle} className='shape' onClick={this.setCurrentStep}>
+            <div style={this.state.steperOuterStyle} className='step-outer-stepper-wizard'>
+                <div data-ref={this.props.id} style={this.state.shapeStyle} className='shape-stepper-wizard' onClick={this.setCurrentStep}>
                     <i style={this.state.shapeContentStyle} className={`shapeContent fa ${this.props.step.icon}`}>{this.props.step.icon ? '' : this.props.step.text}</i>
                     {this.renderDisabled()}
                 </div>

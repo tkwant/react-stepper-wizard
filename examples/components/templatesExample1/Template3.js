@@ -1,15 +1,15 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
+import { Button, FormGroup,  Input } from 'reactstrap';
 
 // Using Redux would be a better solution to store State
 // or store state in App component
 let state = {
     age: "",
-    name: ""
 };
 
 
-class Template3 extends Component{
+class Template3 extends Component {
     constructor(props) {
         super(props);
         this.state = state
@@ -20,36 +20,32 @@ class Template3 extends Component{
 
     }
     componentWillUnmount() {
-       state = this.state
+        state = this.state
     }
 
     handleInputChange(e) {
-        if(e.currentTarget.name === "age"){
+        if (e.currentTarget.name === "age") {
             this.setState({
                 age: e.currentTarget.value
             })
-        }else{
-            this.setState({
-                name: e.currentTarget.value
-            })
         }
     }
 
-    componentDidUpdate(){
-        if(this.state.name && this.state.age != 0){
-            this.props.verify(2,true)
-        }else{
-            this.props.verify(2,false)
+    componentDidUpdate() {
+        if (this.state.age) {
+            this.props.verify(2, true)
+        } else {
+            this.props.verify(2, false)
         }
 
     }
 
-    nextStep(){
+    nextStep() {
 
         this.props.changeCurrentStep(3)
     }
 
-    previousStep(){
+    previousStep() {
         this.props.changeCurrentStep(1)
 
     }
@@ -58,31 +54,29 @@ class Template3 extends Component{
 
     render() {
         return (
-            <div style={{display: 'flex', justifyContent: 'center'}}>
-            <form>
+            <div >
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>
+                    <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                        <Input type="number" name="age" placeholder="Age" onInput={this.handleInputChange} defaultValue={this.state.age} />
+                    </FormGroup>
+                </div>
+
                 <br />
-                <label>
-                    Name:
-              <input
-                        name="name"
-                        type="text"
-                        value={this.state.name}
-                        onChange={this.handleInputChange} />
-                </label>
-                <br />
-                <br />
-                <label>
-                    Age:
-              <input
-                        name="age"
-                        type="number"
-                        value={this.state.age}
-                        onChange={this.handleInputChange} />
-                </label>
-            </form>
-            <button onClick={this.previousStep}>Previous</button>
-            <br/>
-            <button onClick={this.nextStep}>Next</button>
+
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>
+                    <Button onClick={this.previousStep} style={{marginRight:"5px"}} color="danger">Previous</Button>{' '}
+                    <Button onClick={this.nextStep} style={{ marginRight: "5px" }} color="success">Next</Button>{' '}
+
+                </div>
+
 
             </div>
         );

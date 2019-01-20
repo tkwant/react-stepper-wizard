@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 
 // Using Redux would be a better solution to store State
 // or store state in App component
 let state = {
-    age: "",
-    name: ""
+    email: "",
+    password: ""
 };
 
 
@@ -24,20 +25,20 @@ class Template2 extends Component{
     }
 
     handleInputChange(e) {
-        if(e.currentTarget.name === "age"){
+        if(e.currentTarget.name === "email"){
             this.setState({
-                age: e.currentTarget.value
+                email: e.currentTarget.value
             })
         }else{
             this.setState({
-                name: e.currentTarget.value
+                password: e.currentTarget.value
             })
         }
     }
 
 
     componentDidUpdate(){
-        if(this.state.name && this.state.age != 0){
+        if(this.state.email && this.state.password){
             this.props.verify(1,true)
         }else{
             this.props.verify(1,false)
@@ -57,32 +58,40 @@ class Template2 extends Component{
 
     render() {
         return (
-            <div style={{display: 'flex', justifyContent: 'center'}}>
-            <form>
-                <br />
-                <label>
-                    Hobby:
-              <input
-                        name="name"
-                        type="text"
-                        value={this.state.name}
-                        onChange={this.handleInputChange} />
-                </label>
-                <br />
-                <br />
-                <label>
-                    How many cats do you have?:
-              <input
-                        name="age"
-                        type="number"
-                        value={this.state.age}
-                        onChange={this.handleInputChange} />
-                </label>
-            </form>
-            <button onClick={this.previousStep}>Previous</button>
-            <br/>
-            <button onClick={this.nextStep}>Next</button>
+            <div >
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>
 
+                    <Form inline>
+                        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                            <Label for="exampleEmail" className="mr-sm-2">Email</Label>
+                            <Input onInput={this.handleInputChange} type="email" name="email" id="exampleEmail" placeholder="something@idk.cool" defaultValue= {this.state.email} />
+                        </FormGroup>
+
+
+                        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                            <Label for="examplePassword" className="mr-sm-2">Password</Label>
+                            <Input onInput={this.handleInputChange} type="password" name="password" id="examplePassword" placeholder="don't tell!" defaultValue= {this.state.password} />
+                        </FormGroup>
+                    </Form>
+
+
+
+                </div>
+
+                <br/>
+
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>        
+                    <Button onClick={this.previousStep} style={{marginRight:"5px"}} color="danger">Previous</Button>{' '}
+                    <Button onClick={this.nextStep} style={{marginLeft:"5px"}} color="success">Next</Button>{' '}
+                </div>
             </div>
         );
     }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import { Button } from 'reactstrap';
 
 
 
@@ -22,10 +23,7 @@ class Template4 extends Component {
     render() {
         return (
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <button>SEND</button>
-                <button onClick={this.previousStep}>Previous</button>
-                <br />
-                <button onClick={this.nextStep}>Next</button>
+                <Button onClick={this.previousStep}  color="danger">Previous</Button>{' '}
             </div>
         );
     }

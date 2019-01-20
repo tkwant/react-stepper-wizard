@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import Step from './Step'
 import './step.scss'
 import 'font-awesome/css/font-awesome.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 import { throws } from 'assert';
 class Stepper extends Component {
     constructor(props) {
@@ -43,7 +46,7 @@ class Stepper extends Component {
     render() {
         const isStyleSet = this.props.stepperData.style
         return (
-            <div style={isStyleSet ? this.props.stepperData.style.container : ''} className='container'>
+            <div style={isStyleSet ? this.props.stepperData.style.container : ''} className='container-stepper-wizard'>
                 {this.props.stepperData.steps.map((step, i) => <Step
                     key={i}
                     step={step}
