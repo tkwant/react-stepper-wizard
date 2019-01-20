@@ -293,3 +293,10 @@ then open Browser: localhost:9001
 You can use an icon (font awesome icon)  or text 
 
 To enable all steps, add verified: true to stepper Object
+
+## Contribution
+Contributors are welcome
+
+## To Do
+Stepper is only in horizontal view possible.
+Make stepper also avaiable for vertical view.
