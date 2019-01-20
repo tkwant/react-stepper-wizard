@@ -1,6 +1,6 @@
 {
   "name": "react-stepper-wizard",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "description": "",
   "main": "dist/react-stepper-wizard.js",
   "scripts": {
@@ -24,24 +24,26 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "bootstrap": "^4.2.1",
-    "reactstrap": "^7.1.0",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "bootstrap": "^4.2.1",
     "clean-webpack-plugin": "^1.0.0",
+    "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^1.0.1",
     "file-loader": "^2.0.0",
     "jest": "^23.6.0",
     "node-sass": "^4.10.0",
     "react-hot-loader": "^4.3.11",
+    "react-json-editor-ajrm": "^2.5.9",
+    "reactstrap": "^7.1.0",
     "regenerator-runtime": "^0.13.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.26.0",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "3.1.14"
   },
   "dependencies": {
     "font-awesome": "^4.7.0",

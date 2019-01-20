@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: "./src/index.js",
@@ -24,14 +25,8 @@ module.exports = {
           }
         ]
       },
-      {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "url-loader?limit=10000&mimetype=application/font-woff"
-      },
-      {
-        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "file-loader"
-      }
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader" },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader" },
     ]
   },
   resolve: {
@@ -44,7 +39,7 @@ module.exports = {
     library: "Stepper",
     libraryTarget: "umd"
   },
-  externals: ["react", "react-dom", "font-awesome"],
+  externals: ["react", "react-dom"],
   plugins: [
     new CleanWebpackPlugin(["dist"]),
     new webpack.HotModuleReplacementPlugin()
