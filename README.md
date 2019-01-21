@@ -3,12 +3,12 @@
 ### Live Demo
 http://tkwant.de/
 ### Example1
-![example](example1.png)
+![example](https://github.com/tkwant/react-stepper-wizard/raw/master/example1.png)
 
 ____________________________________________________________________________________________________________________
 
 ### Example2
-![example](example2.png)
+![example](https://github.com/tkwant/react-stepper-wizard/raw/master/example2.png)
 
 ____________________________________________________________________________________________________________________
 ## Installation
