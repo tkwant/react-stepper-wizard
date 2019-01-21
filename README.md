@@ -301,3 +301,4 @@ Contributors are welcome
 ## To Do
 Stepper is only in horizontal view possible.
 Make stepper also avaiable for vertical view.
+Use React Router for the steps
