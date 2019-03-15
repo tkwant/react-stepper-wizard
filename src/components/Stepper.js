@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Step from './Step'
 import './step.scss'
 import 'font-awesome/css/font-awesome.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Stepper extends Component {
     constructor(props) {
