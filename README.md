@@ -1,7 +1,7 @@
 # React-Stepper-Wizard
 
 ### Live Demo
-http://tkwant.de/
+http://stepper.tkwant.de/
 ### Example1
 ![example](https://github.com/tkwant/react-stepper-wizard/raw/master/example1.png)
 
