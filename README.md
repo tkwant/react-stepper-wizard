@@ -53,6 +53,7 @@ this.state = {
           shapeBackgroundColor: 'white',
           shapeContentColor: 'green',
           verified: false,
+          bottomText: "Bottom"
         },
         {
           text: '2',
@@ -61,6 +62,7 @@ this.state = {
           shapeBackgroundColor: 'white',
           shapeContentColor: '#f4b042',
           verified: false,
+          topText: "Top"
         },
         {
           text: '3',
@@ -69,6 +71,8 @@ this.state = {
           shapeBackgroundColor: 'white',
           shapeContentColor: '#4f6cc1',
           verified: false,
+          bottomText: "Bottom",
+          topText: "Top"
         },
         {
           text: '4',
