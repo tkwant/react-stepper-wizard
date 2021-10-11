@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { throws } from 'assert';
 
 class Step extends Component {
     constructor(props) {
@@ -12,6 +11,7 @@ class Step extends Component {
         const shapeStyle= props.style.shape
         const lineStyle = props.style.line
         const size = shapeStyle.size        
+        const textSpacing = props.textLineHeight? (props.textLineHeight * 2): 0
         const obj = {
             steperOuterStyle: {
                 width:`${100 / props.numberOfSteps}`
@@ -33,19 +33,20 @@ class Step extends Component {
                 borderWidth: lineStyle.borderWidth,
                 borderColor: lineStyle.borderColor,
                 padding: lineStyle.padding,
-                top: size/2,
+                top: (textSpacing + size)/2,
                 marginRight: size/2 + shapeStyle.borderWidth +lineStyle.padding
             },
             lineRightStyle:{
                 borderWidth: lineStyle.borderWidth,
                 borderColor: lineStyle.borderColor,
                 padding: lineStyle.padding,
-                top: size/2,
+                top: (textSpacing + size)/2,
                 marginLeft: size/2 + shapeStyle.borderWidth +lineStyle.padding
             },
             disabledStyle:{
                 height:size + shapeStyle.borderWidth*2,
                 width: size + shapeStyle.borderWidth*2,
+
             },
             enabled: props.step.enabled
         }
@@ -94,13 +95,21 @@ class Step extends Component {
             return <div style = {this.state.disabledStyle} className='disabled-stepper-wizard'></div>
         }
     }
-
+    
     render() {
+        console.log("this.props")
+        console.log(this.props)
         return (
             <div style={this.state.steperOuterStyle} className='step-outer-stepper-wizard'>
+               <div style={{height: this.props.textLineHeight?this.props.textLineHeight: 0, lineHeight: 2, textAlign: 'center'}}>
+                    {this.props.topText?this.props.topText: <span>&#8203;</span>}
+                </div>
                 <div data-ref={this.props.id} style={this.state.shapeStyle} className='shape-stepper-wizard' onClick={this.setCurrentStep}>
                     <i style={this.state.shapeContentStyle} className={`shapeContent fa ${this.props.step.icon}`}>{this.props.step.icon ? '' : this.props.step.text}</i>
                     {this.renderDisabled()}
+                </div>
+                <div style={{ height: this.props.textLineHeight?this.props.textLineHeight: 0, lineHeight: 2, textAlign: 'center'}}>
+                    {this.props.bottomText?this.props.bottomText: <span>&#8203;</span>}
                 </div>
                 {this.renderLineRight()}
                 {this.renderLineLeft()}

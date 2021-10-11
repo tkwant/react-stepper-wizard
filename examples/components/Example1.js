@@ -5,8 +5,6 @@ import Template2 from './templatesExample1/Template2'
 import Template3 from './templatesExample1/Template3'
 import Template4 from './templatesExample1/Template4'
 import { Container, Row, Col,FormGroup, Label, Input  } from 'reactstrap';
-import JSONInput from 'react-json-editor-ajrm';
-import locale    from 'react-json-editor-ajrm/locale/en';
 
 class Example1 extends Component {
   constructor() {
@@ -31,6 +29,7 @@ class Example1 extends Component {
         }
       },
       currentStep: 0,
+      textLineHeight: 30, 
       steps: [
         {
           text: '1',
@@ -39,6 +38,7 @@ class Example1 extends Component {
           shapeBackgroundColor: 'white',
           shapeContentColor: 'green',
           verified: false,
+          bottomText: "Schritt 1"
         },
         {
           text: '2',
@@ -47,6 +47,7 @@ class Example1 extends Component {
           shapeBackgroundColor: 'white',
           shapeContentColor: '#f4b042',
           verified: false,
+          topText: "Schritt 2"
         },
         {
           text: '3',
@@ -55,6 +56,8 @@ class Example1 extends Component {
           shapeBackgroundColor: 'white',
           shapeContentColor: '#4f6cc1',
           verified: false,
+          topText: "Schritt 3",
+          bottomText: "Schritt 3"
         },
         {
           text: '4',
@@ -70,7 +73,6 @@ class Example1 extends Component {
 
     this.verify = this.verify.bind(this)
     this.changeCurrentStep = this.changeCurrentStep.bind(this)
-    this.jsonOnChange = this.jsonOnChange.bind(this)
   }
 
 
@@ -111,9 +113,6 @@ class Example1 extends Component {
     )
   }
 
-  jsonOnChange(json){
-    this.setState(json.jsObject)
-  }
 
   render() {
     return (
@@ -121,15 +120,6 @@ class Example1 extends Component {
         <h1>Example 1</h1>
         <Row>
           <Col style={{ border: "3px solid black", overflowX: "scroll", padding: "0px" }} xs="3">
-          <JSONInput
-        id          = 'a_unique_id'
-        placeholder = { this.state }
-
-        onChange = {this.jsonOnChange}
-        theme="dark_vscode_tribute"
-        locale      = { locale }
-        height      = '360px'
-    />
 
           </Col>
           <Col style={{ border: "3px solid black" }} xs="9" >

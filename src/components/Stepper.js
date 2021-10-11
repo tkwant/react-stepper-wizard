@@ -48,6 +48,9 @@ class Stepper extends Component {
                     key={i}
                     step={step}
                     id={i}
+                    topText={step.topText}
+                    bottomText={step.bottomText}
+                    textLineHeight={this.props.stepperData.textLineHeight}
                     style={this.props.stepperData.style}
                     numberOfSteps={this.props.stepperData.steps.length}
                     currentStep={this.props.stepperData.currentStep}
