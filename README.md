@@ -44,6 +44,7 @@ this.state = {
         }
       },
       currentStep: 0,
+      textLineHeight: 30, 
       steps: [
         {
           text: '1',
