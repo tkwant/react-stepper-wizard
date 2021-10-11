@@ -38,7 +38,7 @@ class Example1 extends Component {
           shapeBackgroundColor: 'white',
           shapeContentColor: 'green',
           verified: false,
-          bottomText: "Schritt 1"
+          bottomText: "Bottom"
         },
         {
           text: '2',
@@ -47,7 +47,7 @@ class Example1 extends Component {
           shapeBackgroundColor: 'white',
           shapeContentColor: '#f4b042',
           verified: false,
-          topText: "Schritt 2"
+          topText: "Top"
         },
         {
           text: '3',
@@ -56,8 +56,8 @@ class Example1 extends Component {
           shapeBackgroundColor: 'white',
           shapeContentColor: '#4f6cc1',
           verified: false,
-          topText: "Schritt 3",
-          bottomText: "Schritt 3"
+          bottomText: "Bottom",
+          topText: "Top"
         },
         {
           text: '4',
