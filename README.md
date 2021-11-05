@@ -1,7 +1,8 @@
-# React-Stepper-Wizard
+# Archived: Please use https://github.com/tkwant/react-steps
 
-### Live Demo
-http://stepper.tkwant.de/
+
+## React-Stepper-Wizard
+
 ### Example1
 ![example](https://github.com/tkwant/react-stepper-wizard/raw/master/example1.png)
 
